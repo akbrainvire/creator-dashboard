@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { buttons } from "../constants/index";
-import { HeadingContainer } from "@/styles/allStyles";
+import { HeadingContainer } from "@/styles/indexStyle";
 import DatePickerComponent from "./DatePickerComponent";
+// import RangeDatePicker from "./RangeDatePicker";
 type Props = {};
 
 const OptionsChart = (props: Props) => {
@@ -10,7 +11,7 @@ const OptionsChart = (props: Props) => {
   const [show, setShow] = useState(false);
 
   const onChangeHandler = (value: string) => {
-    console.log(value);
+    if (value == "") console.log(value);
     setSelected(value);
   };
 
@@ -27,7 +28,8 @@ const OptionsChart = (props: Props) => {
           />
         );
       })}
-      <DatePickerComponent />
+      <DatePickerComponent selectValueFromtoTo={selected} />
+      {/* <RangeDatePicker /> */}
     </HeadingContainer>
   );
 };

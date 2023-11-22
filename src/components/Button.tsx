@@ -1,4 +1,4 @@
-import { ButtonStyled } from "@/styles/allStyles";
+import { ButtonStyled } from "@/styles/indexStyle";
 import React from "react";
 
 type Props = {
