@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Nioxin Thickening Gel 140ml",
+    "image": "/productimg/skarmavild.svg",
+    "price": 974,
+    "type": "Pricerunner",
+    "percent": 10,
+    "cvrPercent": 49
+  },
+  {
+    "id": 2,
+    "name": "Prada Paradoxe Eau De Parfum 50 ml",
+    "image": "/productimg/intimval.svg",
+    "price": 389,
+    "type": "Lyco",
+    "percent": 5,
+    "cvrPercent": 35
+  },
+  {
+    "id": 3,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "image": "/productimg/curvsoftcurvlong.svg",
+    "price": 996,
+    "type": "Pricerunner",
+    "percent": 5,
+    "cvrPercent": 41
+  },
+  {
+    "id": 4,
+    "name": "Ghd Curve Soft Curl Tong",
+    "image": "/productimg/pradapersona.svg",
+    "price": 259,
+    "type": "Lyco",
+    "percent": 20,
+    "cvrPercent": 33
+  },
+  {
+    "id": 5,
+    "name": "Nioxin Thickening Gel 140ml",
+    "image": "/productimg/skarmavild.svg",
+    "price": 617,
+    "type": "Pricerunner",
+    "percent": 20,
+    "cvrPercent": 43
+  },
+  {
+    "id": 6,
+    "name": "Ghd Curve Soft Curl Tong",
+    "image": "/productimg/pradapersona.svg",
+    "price": 273,
+    "type": "Lyco",
+    "percent": 4,
+    "cvrPercent": 35
+  },
+  {
+    "id": 7,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "image": "/productimg/curvsoftcurvlong.svg",
+    "price": 493,
+    "type": "Pricerunner",
+    "percent": 11,
+    "cvrPercent": 12
+  },
+  {
+    "id": 8,
+    "name": "Prada Paradoxe Eau De Parfum 50 ml",
+    "image": "/productimg/intimval.svg",
+    "price": 647,
+    "type": "Lyco",
+    "percent": 7,
+    "cvrPercent": 23
+  },
+  {
+    "id": 9,
+    "name": "Ghd Curve Soft Curl Tong",
+    "image": "/productimg/pradapersona.svg",
+    "price": 791,
+    "type": "Pricerunner",
+    "percent": 2,
+    "cvrPercent": 21
+  },
+  {
+    "id": 10,
+    "name": "PNioxin Thickening Gel 140ml",
+    "image": "/productimg/skarmavild.svg",
+    "price": 15,
+    "type": "Lyco",
+    "percent": 10,
+    "cvrPercent": 47
+  },
+  {
+    "id": 11,
+    "name": "Ghd Curve Soft Curl Tong",
+    "image": "/productimg/pradapersona.svg",
+    "price": 11,
+    "type": "Pricerunner",
+    "percent": 10,
+    "cvrPercent": 22
+  },
+  {
+    "id": 12,
+    "name": "Prada Paradoxe Eau De Parfum 50 ml",
+    "image": "/productimg/intimval.svg",
+    "price": 439,
+    "type": "Lyco",
+    "percent": 7,
+    "cvrPercent": 14
+  },
+  {
+    "id": 13,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "image": "/productimg/curvsoftcurvlong.svg",
+    "price": 791,
+    "type": "Pricerunner",
+    "percent": 18,
+    "cvrPercent": 14
+  },
+  {
+    "id": 14,
+    "name": "PNioxin Thickening Gel 140ml",
+    "image": "/productimg/skarmavild.svg",
+    "price": 301,
+    "type": "Lyco",
+    "percent": 18,
+    "cvrPercent": 32
+  },
+  {
+    "id": 15,
+    "name": "Ghd Curve Soft Curl Tong",
+    "image": "/productimg/pradapersona.svg",
+    "price": 995,
+    "type": "Pricerunner",
+    "percent": 7,
+    "cvrPercent": 12
+  },
+  {
+    "id": 16,
+    "name": "Prada Paradoxe Eau De Parfum 50 ml",
+    "image": "/productimg/intimval.svg",
+    "price": 633,
+    "type": "Lyco",
+    "percent": 15,
+    "cvrPercent": 48
+  },
+  {
+    "id": 17,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "image": "/productimg/curvsoftcurvlong.svg",
+    "price": 872,
+    "type": "Pricerunner",
+    "percent": 10,
+    "cvrPercent": 20
+  },
+  {
+    "id": 18,
+    "name": "Prada Paradoxe Eau De Parfum 50 ml",
+    "image": "/productimg/intimval.svg",
+    "price": 488,
+    "type": "Lyco",
+    "percent": 0,
+    "cvrPercent": 39
+  },
+  {
+    "id": 19,
+    "name": "PNioxin Thickening Gel 140ml",
+    "image": "/productimg/skarmavild.svg",
+    "price": 497,
+    "type": "Pricerunner",
+    "percent": 14,
+    "cvrPercent": 29
+  },
+  {
+    "id": 20,
+    "name": "Ghd Curve Soft Curl Tong",
+    "image": "/productimg/pradapersona.svg",
+    "price": 608,
+    "type": "Lyco",
+    "percent": 12,
+    "cvrPercent": 11
+  }
+]

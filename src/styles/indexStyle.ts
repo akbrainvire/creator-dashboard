@@ -33,7 +33,7 @@ export const DatePickerContainer = styled(DatePicker)`
 `;
 
 export const BoxShadowContainer = styled.div`
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
 `;
 
 export const MainContainer = styled.div`

@@ -7,6 +7,10 @@ import { CardsComponentContainer } from "@/styles/CardComponentStyles";
 
 type Props = {};
 
+import data from "../../constants/TopProductData.json";
+import postData from "../../constants/TopPostData.json";
+import storeData from "../../constants/TopStoresData.json";
+
 const Dashboard = (props: Props) => {
   return (
     <MainContainer>
@@ -17,9 +21,9 @@ const Dashboard = (props: Props) => {
         <Graph />
       </div>
       <CardsComponentContainer>
-        <CardComponent />
-        <CardComponent />
-        <CardComponent />
+        <CardComponent data={data} title="Top products" />
+        <CardComponent data={postData} title="Top posts" />
+        <CardComponent data={storeData} title="Top stores" />
       </CardsComponentContainer>
     </MainContainer>
   );

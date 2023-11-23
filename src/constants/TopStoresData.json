@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Nioxin Thickening Gel 140ml",
+    "price": 600
+  },
+  {
+    "id": 2,
+    "name": "Prada Paradoxe Eau De Parfum 50 ml",
+    "price": 400
+  },
+  {
+    "id": 3,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 400
+  },
+  {
+    "id": 4,
+    "name": "ghd Curve Soft Curl Tong",
+    "price": 400
+  },
+  {
+    "id": 5,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 400
+  },
+  {
+    "id": 6,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 400
+  },
+  {
+    "id": 7,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 400
+  },
+  {
+    "id": 8,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 400
+  }
+]
