@@ -17,8 +17,13 @@ export const ButtonStyled = styled.button<{
     props.$isSelected ? "1px solid black" : "1px solid #9D9D9D"};
   color: ${(props) => (props.$isSelected ? "black" : "#9D9D9D")};
   border-radius: 20px;
+  white-space: nowrap;
 
   gap: ${(props) => (props.$gap ? "5px" : "0")};
+
+  @media only screen and (max-width: 655px) {
+    display: inline-block;
+  }
 `;
 
 export const HeadingContainer = styled.div`
@@ -28,6 +33,13 @@ export const HeadingContainer = styled.div`
   margin-bottom: 31px;
   align-items: center;
   gap: 0.5rem;
+
+  @media only screen and (max-width: 655px) {
+    /* min-width: 100%; */
+
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
 `;
 
 export const DatePickerContainer = styled(DatePicker)`
@@ -101,6 +113,10 @@ export const MainContainer = styled.div`
 
   @media only screen and (max-width: 920px) {
     margin: 1.125rem 3.375rem;
+  }
+
+  @media only screen and (max-width: 500px) {
+    margin: 2.25rem 0.5rem;
   }
 `;
 

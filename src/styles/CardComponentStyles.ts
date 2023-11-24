@@ -18,7 +18,7 @@ export const OneCardComponent = styled.div<{
   }
 
   @media only screen and (max-width: 1100px) {
-    min-width: 100%;
+    /* min-width: 100%; */
   }
 `;
 
@@ -34,6 +34,10 @@ export const CardsComponentContainer = styled.div`
   @media only screen and (max-width: 768px) {
     flex-direction: column;
   } */
+
+  @media only screen and (max-width: 972px) {
+    display: block;
+  }
 `;
 
 // export const Title = styled.div`
