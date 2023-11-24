@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import format from "date-fns/format";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { DatePickerContainer } from "@/styles/indexStyle";
+import { DatePickerContainer, DatePickerWrapper } from "@/styles/indexStyle";
 type Props = {
   selectValueFromtoTo: string;
 };
@@ -82,28 +82,31 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
   }, [selectValueFromtoTo]);
 
   return (
-    <DatePickerContainer
-      selectsRange={true}
-      startDate={startDate}
-      endDate={endDate}
-      value={calculatedDate}
-      onChange={(update: any) => {
-        const d = new Date(update);
-        console.log(update, "update");
-        setStartDate(update[0]);
-        setEndDate(update[1]);
+    <DatePickerWrapper>
+      <DatePickerContainer
+        selectsRange={true}
+        startDate={startDate}
+        endDate={endDate}
+        value={calculatedDate}
+        onChange={(update: any) => {
+          const d = new Date(update);
+          console.log(update, "update");
+          setStartDate(update[0]);
+          setEndDate(update[1]);
 
-        setCalculatedDate(() => {
-          const startDate = new Date(update[0]);
-          const endDate = new Date(update[1]);
-          let returnDate =
-            format(startDate, "do LLL") + " - " + format(endDate, "do LLL");
-          return returnDate;
-        });
-        // setDateRange(update);
-      }}
-      // value={calculatedDate}
-    />
+          setCalculatedDate(() => {
+            const startDate = new Date(update[0]);
+            const endDate = new Date(update[1]);
+            let returnDate =
+              format(startDate, "do LLL") + " - " + format(endDate, "do LLL");
+            return returnDate;
+          });
+
+          // setDateRange(update);
+        }}
+        // value={calculatedDate}
+      />
+    </DatePickerWrapper>
   );
 };
 

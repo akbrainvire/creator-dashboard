@@ -12,31 +12,46 @@
   {
     "id": 3,
     "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
-    "price": 400
+    "price": 500
   },
   {
     "id": 4,
-    "name": "ghd Curve Soft Curl Tong",
-    "price": 400
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 700
   },
   {
     "id": 5,
     "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
-    "price": 400
+    "price": 1400
   },
   {
     "id": 6,
     "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
-    "price": 400
+    "price": 2400
   },
   {
     "id": 7,
     "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
-    "price": 400
+    "price": 4500
   },
   {
     "id": 8,
     "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
-    "price": 400
+    "price": 450
+  },
+  {
+    "id": 9,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 750
+  },
+  {
+    "id": 10,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 650
+  },
+  {
+    "id": 11,
+    "name": "DeoDoc Violet Cotton Intimtvål 100 ml",
+    "price": 550
   }
 ]

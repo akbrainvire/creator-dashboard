@@ -1,33 +1,25 @@
 import {
   ColumFlexContainerCard,
   EachCardItemContainer,
+  LinkStyleTitleContainer,
   NamePercentTypeContainer,
   OneCardComponent,
   SpanContainer,
-  Title,
 } from "@/styles/CardComponentStyles";
 import { BoxShadowContainer } from "@/styles/indexStyle";
 import { checkIfStringIsUnderCharacter } from "@/utility";
 import Image from "next/image";
 import React from "react";
-
-interface Data {
-  id: number;
-  name: string;
-  image?: string;
-  price: number;
-  type?: string;
-  percent?: number;
-  cvrPercent?: number;
-}
+import defaultProductImage from "../../public/defaultProductImage.png";
+import { Data } from "@/types";
 
 interface PostDataProps {
-  data: { id: number; name: string; image: string; price: number }[];
+  data: Data[];
   title: string;
 }
 
 interface StoresDataProps {
-  data: { id: number; name: string; price: number }[];
+  data: Data[];
   title: string;
 }
 
@@ -38,13 +30,30 @@ interface ProductDataProps {
 
 type PropsData = StoresDataProps | PostDataProps | ProductDataProps;
 
+////////////TYPE GUARD/////////////////
+const isString = (value: any): value is string =>
+  typeof value === "string" || value === undefined;
+
+const isPostData = (data: any): data is PostDataProps => {
+  return isString(data.data.length > 0 ? data.data[0]?.image : null);
+};
+
+const isStoresData = (data: any): data is StoresDataProps => {
+  // console.log(data);
+  return isString(data.data.length > 0 ? data.data[0]?.image : null);
+};
+
+const isProductData = (data: any): data is ProductDataProps => {
+  return isString(data.data.length > 0 ? data.data[0]?.image : null);
+};
+
 const CardComponent = (props: PropsData) => {
-  if (props.title === "Top products") {
+  if (props.title === "Top products" && isProductData(props)) {
     return (
       <BoxShadowContainer>
-        <OneCardComponent>
+        <OneCardComponent $height="440px" $overflowY={true}>
           <>
-            <Title>
+            <LinkStyleTitleContainer href="/topproducts">
               <SpanContainer $bold={true}>{props.title}</SpanContainer>
               <Image
                 src="/caretright.svg"
@@ -52,14 +61,15 @@ const CardComponent = (props: PropsData) => {
                 width={25}
                 height={25}
               />
-            </Title>
+            </LinkStyleTitleContainer>
+
             {props.data.map((item: Data) => {
               const itemName = checkIfStringIsUnderCharacter(`${item.name}`);
               return (
                 <EachCardItemContainer key={item.id}>
                   <NamePercentTypeContainer>
                     <Image
-                      src={item.image}
+                      src={item.image || defaultProductImage}
                       alt={item.name}
                       width={25}
                       height={25}
@@ -90,12 +100,12 @@ const CardComponent = (props: PropsData) => {
       </BoxShadowContainer>
     );
   }
-  if (props.title === "Top posts") {
+  if (props.title === "Top posts" && isPostData(props)) {
     return (
       <BoxShadowContainer>
-        <OneCardComponent>
+        <OneCardComponent $height="440px" $overflowY={true}>
           <>
-            <Title>
+            <LinkStyleTitleContainer href="/topposts">
               <SpanContainer $bold={true}>{props.title}</SpanContainer>
               <Image
                 src="/caretright.svg"
@@ -103,17 +113,17 @@ const CardComponent = (props: PropsData) => {
                 width={25}
                 height={25}
               />
-            </Title>
+            </LinkStyleTitleContainer>
             {props.data.map((item) => {
               const itemName = checkIfStringIsUnderCharacter(item.name);
               return (
                 <EachCardItemContainer key={item.id}>
                   <NamePercentTypeContainer>
                     <Image
-                      src={item.image}
+                      src={item.image || defaultProductImage}
                       alt={item.name}
-                      width={25}
-                      height={25}
+                      width={50}
+                      height={51}
                     />
                     <SpanContainer $bold={true}>{itemName}</SpanContainer>
                   </NamePercentTypeContainer>
@@ -128,12 +138,12 @@ const CardComponent = (props: PropsData) => {
       </BoxShadowContainer>
     );
   }
-  if (props.title === "Top stores") {
+  if (props.title === "Top stores" && isStoresData(props)) {
     return (
       <BoxShadowContainer>
-        <OneCardComponent>
+        <OneCardComponent $height="440px" $overflowY={true}>
           <>
-            <Title>
+            <LinkStyleTitleContainer href="/topstores">
               <SpanContainer $bold={true}>{props.title}</SpanContainer>
               <Image
                 src="/caretright.svg"
@@ -141,11 +151,11 @@ const CardComponent = (props: PropsData) => {
                 width={25}
                 height={25}
               />
-            </Title>
+            </LinkStyleTitleContainer>
             {props.data.map((item) => {
               const itemName = checkIfStringIsUnderCharacter(item.name);
               return (
-                <EachCardItemContainer key={item.id}>
+                <EachCardItemContainer key={item.id} $padding="1.38rem 2rem">
                   <NamePercentTypeContainer>
                     <SpanContainer $bold={true}>{itemName}</SpanContainer>
                   </NamePercentTypeContainer>

@@ -1,16 +1,24 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export const OneCardComponent = styled.div`
-  width: 390px;
-  height: 440px;
+export const OneCardComponent = styled.div<{
+  $height?: string;
+  $overflowY?: boolean;
+}>`
+  min-width: 390px;
+  height: ${(props) => (props.$height ? props.$height : "auto")};
 
   border-radius: 10px;
   gap: 16px;
-  overflow-y: scroll;
+  overflow-y: ${(props) => (props.$height ? "scroll" : "")};
   background-color: rgba(255, 255, 255, 0.4);
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    min-width: 100%;
   }
 `;
 
@@ -20,6 +28,7 @@ export const CardsComponentContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 1.1875rem;
+  flex-wrap: wrap;
   /* width: 76.25rem; */
   /* 
   @media only screen and (max-width: 768px) {
@@ -27,8 +36,53 @@ export const CardsComponentContainer = styled.div`
   } */
 `;
 
-export const Title = styled.div`
+// export const Title = styled.div`
+//   position: sticky;
+//   background-color: rgba(255, 255, 255, 1);
+//   top: 0;
+
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   padding: 22px 50px;
+//   box-sizing: border-box;
+//   border-bottom: 1px solid #dddddd;
+//   align-items: center;
+
+//   & > span {
+//     font-size: 22px;
+//     font-weight: 500;
+//     line-height: 26px;
+//     letter-spacing: 0em;
+//   }
+// `;
+
+export const LinkStyleTitleContainer = styled(Link)`
   position: sticky;
+  position: -webkit-sticky;
+  background-color: rgba(255, 255, 255, 1);
+  top: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 22px 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dddddd;
+  align-items: center;
+  text-decoration: none;
+
+  & > span {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+  }
+`;
+
+export const NormalTitleContainer = styled.div`
+  position: sticky;
+  position: -webkit-sticky;
   background-color: rgba(255, 255, 255, 1);
   top: 0;
 
@@ -48,7 +102,7 @@ export const Title = styled.div`
   }
 `;
 
-export const EachCardItemContainer = styled.div`
+export const EachCardItemContainer = styled.div<{ $padding?: string }>`
   /* display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -57,16 +111,16 @@ export const EachCardItemContainer = styled.div`
   padding: 0.625rem 2rem; */
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   flex: 1 0 0;
   align-self: stretch;
-  padding: 0.625rem 2rem;
+  padding: ${(props) => (props.$padding ? props.$padding : "0.625rem 2rem")};
+  border-bottom: 1px solid #dddddd;
 `;
 
 export const NamePercentTypeContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1rem;
   flex: 1 0 0;

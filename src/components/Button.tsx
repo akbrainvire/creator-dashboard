@@ -15,6 +15,10 @@ const Button = ({ name, id, onChangeHandler, currentSelectedValue }: Props) => {
       name={name}
       id={id}
       $isSelected={currentSelectedValue == name}
+      $gap={true}
+      $padding={true}
+      $width={true}
+      $height={true}
       onClick={() => onChangeHandler(name)}
     >
       {name}
