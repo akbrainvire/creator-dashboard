@@ -16,7 +16,7 @@ const Dashboard = (props: Props) => {
   return (
     <MainContainer>
       <div className="options of chart">
-        <OptionsChart />
+        <OptionsChart isApplyStyle={true} />
       </div>
       <div className="graph">
         <Graph />

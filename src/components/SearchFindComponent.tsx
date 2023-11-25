@@ -4,6 +4,7 @@ import {
   ButtonStyled,
   CaretLeftImage,
   CaretRightandLinkContainer,
+  ControlHorizontalScrollDetail,
   HeadingContainer,
   LinkStyle,
   SearchFindContainer,
@@ -19,40 +20,42 @@ const SearchFindComponent = (props: Props) => {
   console.log(router.query);
   return (
     <SearchFindContainer>
-      <HeadingContainer>
-        <CaretRightandLinkContainer>
-          <LinkStyle href="/dashboard">
-            <CaretLeftImage
-              src="/caretright.svg"
-              alt="caretrightarrow"
-              width={15}
-              height={15}
-            />
-          </LinkStyle>
+      <HeadingContainer $applyStyle={false}>
+        <ControlHorizontalScrollDetail>
+          <CaretRightandLinkContainer>
+            <LinkStyle href="/dashboard">
+              <CaretLeftImage
+                src="/caretright.svg"
+                alt="caretrightarrow"
+                width={15}
+                height={15}
+              />
+            </LinkStyle>
 
-          <SearchFindLinkContainer>
-            <ButtonStyled
-              $padding={true}
-              $isSelected={"topproducts" === router.query.category}
-            >
-              <LinkStyle href="/topproducts">Top products</LinkStyle>
-            </ButtonStyled>
-            <ButtonStyled
-              $padding={true}
-              $isSelected={"topposts" === router.query.category}
-            >
-              <LinkStyle href="/topposts">Top posts</LinkStyle>
-            </ButtonStyled>
-            <ButtonStyled
-              $padding={true}
-              $isSelected={"topstores" === router.query.category}
-            >
-              <LinkStyle href="/topstores">Top stores</LinkStyle>
-            </ButtonStyled>
-          </SearchFindLinkContainer>
-        </CaretRightandLinkContainer>
+            <SearchFindLinkContainer>
+              <ButtonStyled
+                $padding={true}
+                $isSelected={"topproducts" === router.query.category}
+              >
+                <LinkStyle href="/topproducts">Top products</LinkStyle>
+              </ButtonStyled>
+              <ButtonStyled
+                $padding={true}
+                $isSelected={"topposts" === router.query.category}
+              >
+                <LinkStyle href="/topposts">Top posts</LinkStyle>
+              </ButtonStyled>
+              <ButtonStyled
+                $padding={true}
+                $isSelected={"topstores" === router.query.category}
+              >
+                <LinkStyle href="/topstores">Top stores</LinkStyle>
+              </ButtonStyled>
+            </SearchFindLinkContainer>
+          </CaretRightandLinkContainer>
+          <OptionsChart isApplyStyle={false} />
+        </ControlHorizontalScrollDetail>
       </HeadingContainer>
-      <OptionsChart />
     </SearchFindContainer>
   );
 };

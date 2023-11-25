@@ -11,7 +11,6 @@ import { Data } from "@/types";
 import Image from "next/image";
 import React, { Fragment } from "react";
 import defaultProductImage from "../../../public/defaultProductImage.png";
-import OptionsChart from "@/components/OptionsChart";
 import SearchFindComponent from "@/components/SearchFindComponent";
 
 interface Props {

@@ -4,7 +4,9 @@ import { buttons } from "../constants/index";
 import { HeadingContainer } from "@/styles/indexStyle";
 import DatePickerComponent from "./DatePickerComponent";
 // import RangeDatePicker from "./RangeDatePicker";
-type Props = {};
+type Props = {
+  isApplyStyle: boolean;
+};
 
 const OptionsChart = (props: Props) => {
   const [selected, setSelected] = useState("");
@@ -16,7 +18,7 @@ const OptionsChart = (props: Props) => {
   };
 
   return (
-    <HeadingContainer>
+    <HeadingContainer $applyStyle={props.isApplyStyle}>
       {buttons.map((buttonDetails: any, index: number) => {
         return (
           <Button

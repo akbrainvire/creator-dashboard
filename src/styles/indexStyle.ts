@@ -19,26 +19,45 @@ export const ButtonStyled = styled.button<{
   border-radius: 20px;
   white-space: nowrap;
 
+  & > a {
+    color: ${(props) => (props.$isSelected ? "black" : "#9D9D9D")};
+  }
+
   gap: ${(props) => (props.$gap ? "5px" : "0")};
 
   @media only screen and (max-width: 655px) {
     display: inline-block;
+    padding: 8px;
   }
 `;
 
-export const HeadingContainer = styled.div`
+export const HeadingContainer = styled.div<{
+  $applyStyle?: boolean;
+}>`
   display: flex;
   flex-direction: row;
   justify-content: end;
-  margin-bottom: 31px;
+  margin-bottom: ${(props) => (props.$applyStyle ? "31px" : "0")};
   align-items: center;
   gap: 0.5rem;
+  width: 100%;
 
   @media only screen and (max-width: 655px) {
-    /* min-width: 100%; */
-
-    overflow-x: scroll;
+    justify-content: normal;
+    ${(props) =>
+      props.$applyStyle &&
+      `
+        /* Styles to apply when isPrimary prop is true */
+        display: flex;
+    // flex-direction: row-reverse;
+    justify-content: normal;
+    overflow-x: auto;
     white-space: nowrap;
+    /////////////HIDE SCROLLBAR/////////////////////////
+    &::-webkit-scrollbar {
+      display: none;
+    }
+      `}/* min-width: 100%; */
   }
 `;
 
@@ -46,25 +65,26 @@ export const DatePickerContainer = styled(DatePicker)`
   text-align: center;
   display: flex;
   align-items: center;
-
+  font-family: "Strawford", sans-serif;
   padding: 0px, 14px, 0px, 14px;
   background-color: white;
   border-radius: 20px;
-  width: 146px;
-  height: 39px;
+  padding: 12px;
+  width: 8rem;
   gap: 5px;
   border: 1px solid black;
+
+  @media only screen and (max-width: 655px) {
+    padding: 8px;
+  }
 `;
 
 export const DatePickerWrapper = styled.div`
   .react-datepicker {
     box-shadow: 3px 2px 11px rgb(0 0 0 / 30%);
   }
-  .react-datepicker__day--selected,
-  .react-datepicker__day--in-selecting-range {
-    background-color: #34554a;
-    color: #fff;
-  }
+
+  //This one
   .react-datepicker__day--selected,
   .react-datepicker__day--in-selecting-range,
   .react-datepicker__day--in-range,
@@ -79,20 +99,36 @@ export const DatePickerWrapper = styled.div`
   .react-datepicker__year-text--in-range {
     background-color: #34554a;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 0px;
+    margin: 0;
+    padding: 2px;
   }
 
-  /* .react-datepicker__week--selected {
-    background-color: #34554a;
-    border-radius: 20px;
-    color: #fff;
-  } */
+  .react-datepicker__day--keyboard-selected,
+  .react-datepicker__month-text--keyboard-selected,
+  .react-datepicker__quarter-text--keyboard-selected,
+  .react-datepicker__year-text--keyboard-selected {
+    border-radius: 45px 0 0 45px;
+  }
 
-  /* .react-datepicker__week--keyboard-selected {
-    background-color: #34554a;
-    border-radius: 20px;
-    color: #fff;
-  } */
+  .react-datepicker__day--range-start: hover {
+    border-radius: 45px 0 0 45px;
+  }
+
+  .react-datepicker__day:hover {
+    border-radius: 0 45px 45px 0;
+  }
+  .react-datepicker__day--range-end {
+    border-radius: 0 45px 45px 0;
+  }
+
+  .react-datepicker__day {
+    margin: 0;
+    padding: 2px;
+  }
+  .react-datepicker__week {
+    margin-bottom: 1px;
+  }
 `;
 
 export const BoxShadowContainer = styled.div`
@@ -116,7 +152,7 @@ export const MainContainer = styled.div`
   }
 
   @media only screen and (max-width: 500px) {
-    margin: 2.25rem 0.5rem;
+    margin: 2.25rem 1rem;
   }
 `;
 
@@ -125,6 +161,7 @@ export const SearchFindContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 31px;
 `;
 
 export const SearchFindLinkContainer = styled.div`
@@ -141,6 +178,25 @@ export const CaretRightandLinkContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+`;
+
+export const ControlHorizontalScrollDetail = styled.div`
+  display: flex;
+  justify-content: normal;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+
+  @media only screen and (max-width: 1060px) {
+    display: flex;
+    justify-content: normal;
+    overflow: auto;
+    white-space: nowrap;
+    /////////////HIDE SCROLLBAR/////////////////////////
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 export const LinkStyle = styled(Link)<{ $isSelected?: boolean }>`

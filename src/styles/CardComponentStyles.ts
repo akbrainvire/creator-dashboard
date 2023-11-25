@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const OneCardComponent = styled.div<{
   $height?: string;
   $overflowY?: boolean;
+  $isheightChange?: boolean;
 }>`
   min-width: 390px;
   height: ${(props) => (props.$height ? props.$height : "auto")};
@@ -17,8 +18,12 @@ export const OneCardComponent = styled.div<{
     display: none;
   }
 
-  @media only screen and (max-width: 1100px) {
-    /* min-width: 100%; */
+  @media only screen and (max-width: 972px) {
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 655px) {
+    height: ${(props) => (props.$isheightChange ? "300px" : "auto")};
   }
 `;
 

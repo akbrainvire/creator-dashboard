@@ -51,7 +51,11 @@ const CardComponent = (props: PropsData) => {
   if (props.title === "Top products" && isProductData(props)) {
     return (
       <BoxShadowContainer>
-        <OneCardComponent $height="440px" $overflowY={true}>
+        <OneCardComponent
+          $height="440px"
+          $overflowY={true}
+          $isheightChange={true}
+        >
           <>
             <LinkStyleTitleContainer href="/topproducts">
               <SpanContainer $bold={true}>{props.title}</SpanContainer>
@@ -103,7 +107,11 @@ const CardComponent = (props: PropsData) => {
   if (props.title === "Top posts" && isPostData(props)) {
     return (
       <BoxShadowContainer>
-        <OneCardComponent $height="440px" $overflowY={true}>
+        <OneCardComponent
+          $height="440px"
+          $overflowY={true}
+          $isheightChange={true}
+        >
           <>
             <LinkStyleTitleContainer href="/topposts">
               <SpanContainer $bold={true}>{props.title}</SpanContainer>
@@ -141,7 +149,11 @@ const CardComponent = (props: PropsData) => {
   if (props.title === "Top stores" && isStoresData(props)) {
     return (
       <BoxShadowContainer>
-        <OneCardComponent $height="440px" $overflowY={true}>
+        <OneCardComponent
+          $height="440px"
+          $overflowY={true}
+          $isheightChange={true}
+        >
           <>
             <LinkStyleTitleContainer href="/topstores">
               <SpanContainer $bold={true}>{props.title}</SpanContainer>

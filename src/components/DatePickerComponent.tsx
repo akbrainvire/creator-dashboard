@@ -88,6 +88,7 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
         startDate={startDate}
         endDate={endDate}
         value={calculatedDate}
+        formatWeekDay={(nameOfDay) => nameOfDay.substring(0, 3)}
         onChange={(update: any) => {
           const d = new Date(update);
           console.log(update, "update");
@@ -101,7 +102,6 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
               format(startDate, "do LLL") + " - " + format(endDate, "do LLL");
             return returnDate;
           });
-
           // setDateRange(update);
         }}
         // value={calculatedDate}
