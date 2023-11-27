@@ -19,6 +19,7 @@ export const OneCardComponent = styled.div<{
   }
 
   @media only screen and (max-width: 972px) {
+    min-width: 0;
     margin-bottom: 20px;
   }
 
@@ -89,25 +90,37 @@ export const LinkStyleTitleContainer = styled(Link)`
   }
 `;
 
-export const NormalTitleContainer = styled.div`
+export const NormalTitleContainer = styled.div<{ $position?: boolean }>`
   position: sticky;
+  width: 100%;
   position: -webkit-sticky;
   background-color: rgba(255, 255, 255, 1);
   top: 0;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 22px 50px;
+  padding: 15px 32px;
   box-sizing: border-box;
   border-bottom: 1px solid #dddddd;
   align-items: center;
-
+  z-index: 100;
   & > span {
     font-size: 22px;
     font-weight: 500;
     line-height: 26px;
     letter-spacing: 0em;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 12px 15px;
+  }
+  @media only screen and (max-width: 600px) {
+    & > span {
+      font-size: 1.2rem;
+    }
   }
 `;
 

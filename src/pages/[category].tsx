@@ -12,6 +12,7 @@ import Image from "next/image";
 import React, { Fragment } from "react";
 import defaultProductImage from "../../public/defaultProductImage.png";
 import SearchFindComponent from "@/components/SearchFindComponent";
+import TitleOfPPS from "@/components/TitleOfPPS";
 
 interface Props {
   productData: Data[];
@@ -26,9 +27,7 @@ const TopProducts = (props: Props) => {
         <BoxShadowContainer>
           <OneCardComponent>
             <>
-              <NormalTitleContainer>
-                <SpanContainer $bold={true}>{props.title}</SpanContainer>
-              </NormalTitleContainer>
+              <TitleOfPPS title={props.title} />
 
               {props.productData.map((item: Data) => {
                 return (

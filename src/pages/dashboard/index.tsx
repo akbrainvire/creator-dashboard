@@ -5,6 +5,7 @@ import { MainContainer } from "@/styles/indexStyle";
 import CardComponent from "@/components/CardComponent";
 import { CardsComponentContainer } from "@/styles/CardComponentStyles";
 import { Data } from "@/types";
+import TitleOfPPS from "@/components/TitleOfPPS";
 
 type Props = {
   productData: Data[];
@@ -15,6 +16,7 @@ type Props = {
 const Dashboard = (props: Props) => {
   return (
     <MainContainer>
+      <TitleOfPPS title="My dashboard" show={true} />
       <div className="options of chart">
         <OptionsChart isApplyStyle={true} />
       </div>

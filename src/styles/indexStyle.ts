@@ -33,6 +33,7 @@ export const ButtonStyled = styled.button<{
 
 export const HeadingContainer = styled.div<{
   $applyStyle?: boolean;
+  $applyPadding?: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -58,6 +59,13 @@ export const HeadingContainer = styled.div<{
       display: none;
     }
       `}/* min-width: 100%; */
+  }
+
+  @media only screen and (max-width: 1024px) {
+    margin-top: 2.3rem;
+  }
+  @media only screen and (max-width: 920px) {
+    margin-top: ${(props) => (props.$applyPadding ? "2.5rem" : "1.5rem")};
   }
 `;
 
@@ -111,7 +119,7 @@ export const DatePickerWrapper = styled.div`
     border-radius: 45px 0 0 45px;
   }
 
-  .react-datepicker__day--range-start: hover {
+  .react-datepicker__day--range-start:hover {
     border-radius: 45px 0 0 45px;
   }
 
