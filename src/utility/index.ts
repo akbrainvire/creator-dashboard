@@ -10,8 +10,8 @@ export function getMonthName(monthNumber: number) {
 export function checkIfStringIsUnderCharacter(inputString: string) {
   // console.log(inputString.length);
 
-  if (inputString && inputString.length > 27) {
-    const shortenedString = inputString.substring(0, 24) + "...";
+  if (inputString && inputString.length > 20) {
+    const shortenedString = inputString.substring(0, 20) + "...";
     return shortenedString;
   } else {
   }

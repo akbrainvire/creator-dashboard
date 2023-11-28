@@ -13,21 +13,24 @@ type Props = {
 
 const TitleOfPPS = (props: Props) => {
   const { data } = useWindowDimension();
-  console.log(data);
   return (
     <>
       {props.show ? (
-        data > 425 ? (
+        data > 426 ? (
           ""
         ) : (
-          <TopHeaderForMobile title={props.title} />
+          <TopHeaderForMobile title={props.title} link={"/"} crosslink={"/"} />
         )
       ) : data > 1024 ? (
-        <NormalTitleContainer>
+        <NormalTitleContainer $marginBottom={true}>
           <SpanContainer $bold={true}>{props.title}</SpanContainer>
         </NormalTitleContainer>
       ) : (
-        <TopHeaderForMobile title={props.title} />
+        <TopHeaderForMobile
+          title={props.title}
+          link={"/dashboard"}
+          crosslink={"/dashboard"}
+        />
       )}
     </>
   );

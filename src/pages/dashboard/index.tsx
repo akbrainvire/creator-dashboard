@@ -18,7 +18,7 @@ const Dashboard = (props: Props) => {
     <MainContainer>
       <TitleOfPPS title="My dashboard" show={true} />
       <div className="options of chart">
-        <OptionsChart isApplyStyle={true} />
+        <OptionsChart isApplyStyle={false} />
       </div>
       <div className="graph">
         <Graph />

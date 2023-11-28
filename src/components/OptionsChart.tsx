@@ -22,7 +22,7 @@ const OptionsChart = (props: Props) => {
   return (
     <HeadingContainer
       $applyStyle={props.isApplyStyle}
-      $applyPadding={data < 425}
+      $applyPadding={data < 425 ? true : false}
     >
       {buttons.map((buttonDetails: any, index: number) => {
         return (

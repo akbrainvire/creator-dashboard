@@ -1,21 +1,17 @@
 import { NormalTitleContainer } from "@/styles/CardComponentStyles";
-import {
-  CaretLeftImage,
-  CaretRightandLinkContainer,
-  LinkStyle,
-} from "@/styles/indexStyle";
-import { useRouter } from "next/router";
+import { CaretLeftImage, LinkStyle } from "@/styles/indexStyle";
 import React from "react";
 
 type Props = {
   title: string;
+  link: string;
+  crosslink: string;
 };
 
 const TopHeaderForMobile = (props: Props) => {
-  const router = useRouter();
   return (
-    <NormalTitleContainer>
-      <LinkStyle href="/dashboard">
+    <NormalTitleContainer $marginBottom={false}>
+      <LinkStyle href={props.link}>
         <CaretLeftImage
           src="/caretright.svg"
           alt="caretrightarrow"
@@ -26,7 +22,7 @@ const TopHeaderForMobile = (props: Props) => {
 
       <span>{props.title}</span>
 
-      <LinkStyle href="/dashboard">
+      <LinkStyle href={props.crosslink}>
         <CaretLeftImage src="/cross.svg" alt="cross" width={15} height={15} />
       </LinkStyle>
     </NormalTitleContainer>

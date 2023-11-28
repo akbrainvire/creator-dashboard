@@ -38,7 +38,7 @@ export const HeadingContainer = styled.div<{
   display: flex;
   flex-direction: row;
   justify-content: end;
-  margin-bottom: ${(props) => (props.$applyStyle ? "31px" : "0")};
+  margin-bottom: ${(props) => (props.$applyPadding ? "0" : "0")};
   align-items: center;
   gap: 0.5rem;
   width: 100%;
@@ -46,11 +46,16 @@ export const HeadingContainer = styled.div<{
   @media only screen and (max-width: 655px) {
     justify-content: normal;
     ${(props) =>
-      props.$applyStyle &&
+      !props.$applyStyle &&
       `
         /* Styles to apply when isPrimary prop is true */
         display: flex;
     // flex-direction: row-reverse;
+    & :nth-child(1) { order: 2; }
+    &  :nth-child(2) { order: 3; }
+    &  :nth-child(3) { order: 4; }
+    & :nth-child(4) { order: 5; }
+    &  :nth-child(5) { order: 1; }
     justify-content: normal;
     overflow-x: auto;
     white-space: nowrap;
@@ -62,10 +67,10 @@ export const HeadingContainer = styled.div<{
   }
 
   @media only screen and (max-width: 1024px) {
-    margin-top: 2.3rem;
+    margin-top: 2rem;
   }
   @media only screen and (max-width: 920px) {
-    margin-top: ${(props) => (props.$applyPadding ? "2.5rem" : "1.5rem")};
+    margin-top: ${(props) => (props.$applyPadding ? "2rem" : "1.5rem")};
   }
 `;
 
@@ -89,9 +94,18 @@ export const DatePickerContainer = styled(DatePicker)`
 
 export const DatePickerWrapper = styled.div`
   .react-datepicker {
-    box-shadow: 3px 2px 11px rgb(0 0 0 / 30%);
+    box-shadow: 3px 2px 11px rgb(136 136 136 / 30%);
+    background-color: white;
+    border: none;
   }
 
+  .react-datepicker__month-container {
+    padding: 0.5rem 0.4rem;
+  }
+
+  .react-datepicker__header {
+    background-color: white;
+  }
   //This one
   .react-datepicker__day--selected,
   .react-datepicker__day--in-selecting-range,
@@ -119,6 +133,16 @@ export const DatePickerWrapper = styled.div`
     border-radius: 45px 0 0 45px;
   }
 
+  .react-datepicker__day-names {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1rem 0.5rem 1rem;
+  }
+
+  .react-datepicker__day-name {
+    color: #6b6969;
+  }
+
   .react-datepicker__day--range-start:hover {
     border-radius: 45px 0 0 45px;
   }
@@ -137,9 +161,43 @@ export const DatePickerWrapper = styled.div`
   .react-datepicker__week {
     margin-bottom: 1px;
   }
+  .react-datepicker__current-month {
+    font-weight: normal;
+  }
+
+  @media only screen and (max-width: 650px) {
+    .react-datepicker__day--selected,
+    .react-datepicker__day--in-selecting-range,
+    .react-datepicker__day--in-range,
+    .react-datepicker__month-text--selected,
+    .react-datepicker__month-text--in-selecting-range,
+    .react-datepicker__month-text--in-range,
+    .react-datepicker__quarter-text--selected,
+    .react-datepicker__quarter-text--in-selecting-range,
+    .react-datepicker__quarter-text--in-range,
+    .react-datepicker__year-text--selected,
+    .react-datepicker__year-text--in-selecting-range,
+    .react-datepicker__year-text--in-range {
+      padding: 6px;
+    }
+
+    .react-datepicker__day {
+      padding: 6px;
+    }
+  }
+`;
+
+export const DatePickerCustomHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
 `;
 
 export const BoxShadowContainer = styled.div`
+  border-radius: 20px;
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
 `;
 
@@ -185,7 +243,8 @@ export const CaretRightandLinkContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 3.5rem;
+  padding-left: 20px;
 `;
 
 export const ControlHorizontalScrollDetail = styled.div`

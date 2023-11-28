@@ -4,6 +4,7 @@ import {
   NamePercentTypeContainer,
   NormalTitleContainer,
   OneCardComponent,
+  ProductPercentAndType,
   SpanContainer,
 } from "@/styles/CardComponentStyles";
 import { BoxShadowContainer, MainContainer } from "@/styles/indexStyle";
@@ -12,6 +13,7 @@ import Image from "next/image";
 import React, { Fragment } from "react";
 import defaultProductImage from "../../../public/defaultProductImage.png";
 import SearchFindComponent from "@/components/SearchFindComponent";
+import { checkIfStringIsUnderCharacter } from "@/utility";
 
 interface Props {
   productData: Data[];
@@ -46,10 +48,12 @@ const TopProducts = (props: Props) => {
                         ""
                       )}
                       <div className="nameAndpercent">
-                        <SpanContainer $bold={true}>{item.name}</SpanContainer>
+                        <SpanContainer $bold={true} $nowrap={false}>
+                          {checkIfStringIsUnderCharacter(item.name)}
+                        </SpanContainer>
 
                         {props.title === "Top products" ? (
-                          <div className="percentandtype">
+                          <ProductPercentAndType>
                             <SpanContainer
                               $background="#f4f0ec"
                               $bold={true}
@@ -58,7 +62,7 @@ const TopProducts = (props: Props) => {
                               {item.percent + "%"}
                             </SpanContainer>
                             <SpanContainer>{" " + item.type}</SpanContainer>
-                          </div>
+                          </ProductPercentAndType>
                         ) : (
                           ""
                         )}

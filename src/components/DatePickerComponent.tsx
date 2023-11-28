@@ -3,7 +3,13 @@ import DatePicker from "react-datepicker";
 import format from "date-fns/format";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { DatePickerContainer, DatePickerWrapper } from "@/styles/indexStyle";
+import {
+  CaretLeftImage,
+  DatePickerContainer,
+  DatePickerCustomHeader,
+  DatePickerWrapper,
+} from "@/styles/indexStyle";
+import Image from "next/image";
 type Props = {
   selectValueFromtoTo: string;
 };
@@ -81,6 +87,30 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
     }
   }, [selectValueFromtoTo]);
 
+  const renderCustomHeader = ({ date, decreaseMonth, increaseMonth }: any) => {
+    return (
+      <DatePickerCustomHeader>
+        <div onClick={decreaseMonth}>
+          <CaretLeftImage
+            src="/caretright.svg"
+            width={15}
+            height={15}
+            alt="Left"
+          />
+        </div>
+        <div className="custom-month">{format(date, "MMMM")}</div>
+        <div onClick={increaseMonth}>
+          <Image
+            src="/caretright.svg"
+            alt="caretrightarrow"
+            width={15}
+            height={15}
+          />
+        </div>
+      </DatePickerCustomHeader>
+    );
+  };
+
   return (
     <DatePickerWrapper>
       <DatePickerContainer
@@ -89,6 +119,7 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
         endDate={endDate}
         value={calculatedDate}
         formatWeekDay={(nameOfDay) => nameOfDay.substring(0, 3)}
+        renderCustomHeader={renderCustomHeader}
         onChange={(update: any) => {
           const d = new Date(update);
           console.log(update, "update");

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -33,7 +34,7 @@ export const CardsComponentContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1.1875rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
   /* width: 76.25rem; */
   /* 
@@ -76,7 +77,7 @@ export const LinkStyleTitleContainer = styled(Link)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 22px 50px;
+  padding: 22px 25px;
   box-sizing: border-box;
   border-bottom: 1px solid #dddddd;
   align-items: center;
@@ -84,13 +85,12 @@ export const LinkStyleTitleContainer = styled(Link)`
 
   & > span {
     font-size: 22px;
-    font-weight: 500;
     line-height: 26px;
     letter-spacing: 0em;
   }
 `;
 
-export const NormalTitleContainer = styled.div<{ $position?: boolean }>`
+export const NormalTitleContainer = styled.div<{ $marginBottom?: boolean }>`
   position: sticky;
   width: 100%;
   position: -webkit-sticky;
@@ -101,13 +101,13 @@ export const NormalTitleContainer = styled.div<{ $position?: boolean }>`
   justify-content: space-between;
   padding: 15px 32px;
   box-sizing: border-box;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: ${(props) =>
+    props.$marginBottom ? " 1px solid #dddddd" : "0"};
   align-items: center;
-  z-index: 100;
+  /* z-index: 100; */
   & > span {
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 26px;
+    font-size: 21px;
+    line-height: 20px;
     letter-spacing: 0em;
   }
 
@@ -116,6 +116,7 @@ export const NormalTitleContainer = styled.div<{ $position?: boolean }>`
     top: 0;
     left: 0;
     padding: 12px 15px;
+    z-index: 1000;
   }
   @media only screen and (max-width: 600px) {
     & > span {
@@ -124,6 +125,8 @@ export const NormalTitleContainer = styled.div<{ $position?: boolean }>`
   }
 `;
 
+export const PostsImageStyled = styled(Image)``;
+
 export const EachCardItemContainer = styled.div<{ $padding?: string }>`
   /* display: flex;
   flex-direction: row;
@@ -131,13 +134,14 @@ export const EachCardItemContainer = styled.div<{ $padding?: string }>`
   align-items: center;
   height: 70px;
   padding: 0.625rem 2rem; */
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   flex: 1 0 0;
   align-self: stretch;
-  padding: ${(props) => (props.$padding ? props.$padding : "0.625rem 2rem")};
+  padding: ${(props) => (props.$padding ? props.$padding : "0.625rem  1.2rem")};
   border-bottom: 1px solid #dddddd;
 `;
 
@@ -153,6 +157,7 @@ export const ColumFlexContainerCard = styled.div`
   display: flex;
   flex-direction: column;
   color: #3a3a3a;
+  align-items: end;
 
   #percent {
     background-color: #f4f0ec;
@@ -175,6 +180,7 @@ export const SpanContainer = styled.span<{
   $bold?: boolean;
   $background?: string;
   $padding?: boolean;
+  $nowrap?: boolean;
 }>`
   /* min-width: 0;
   white-space: nowrap;
@@ -185,9 +191,23 @@ export const SpanContainer = styled.span<{
   font-weight: ${(props) => (props.$bold ? "600" : "400")};
   line-height: normal;
   color: #3a3a3a;
+  white-space: ${(props) => (props.$nowrap ? "nowrap" : "")};
+
+  /* height: 50px; */
   background-color: ${(props) => (props.$background ? props.$background : "")};
   /* margin: 0.3rem 0; */
-  padding: ${(props) => (props.$padding ? "0.3rem 0.2rem" : "0.3rem 0")};
+  padding: ${(props) => (props.$padding ? "0.2rem" : "0.3rem 0")};
 
   white-space: ${(props) => (props.$wrap ? "nowrap" : "")};
+`;
+
+export const ProductPercentAndType = styled.div`
+  margin-top: 0.3rem;
+  gap: 0.5rem;
+  display: flex;
+`;
+
+export const OneContainerTabHeight = styled.div`
+  box-sizing: border-box;
+  /* height: 50px; */
 `;
