@@ -25,8 +25,8 @@ const Graph = (props: Props) => {
         ) : (
           ""
         )}
-        <StyledGraphImage src={graphImage} alt="graph" />
-        {/* <ChartComponent /> */}
+        {/* <StyledGraphImage src={graphImage} alt="graph" /> */}
+        <ChartComponent />
         <div
           style={{
             color: "black",

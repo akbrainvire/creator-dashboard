@@ -2,6 +2,7 @@ import {
   ColumFlexContainerCard,
   EachCardItemContainer,
   LinkStyleTitleContainer,
+  NamePercentContainer,
   NamePercentTypeContainer,
   OneCardComponent,
   OneContainerTabHeight,
@@ -55,141 +56,151 @@ const CardComponent = (props: PropsData) => {
   const { data } = useWindowDimension();
   if (props.title === "Top products" && isProductData(props)) {
     return (
-      <BoxShadowContainer>
-        <OneCardComponent
-          $height="433px"
-          $overflowY={true}
-          $isheightChange={true}
-        >
-          <>
-            <LinkStyleTitleContainer href="/topproducts">
-              <SpanContainer $bold={true}>{props.title}</SpanContainer>
-              <Image
-                src="/caretright.svg"
-                alt="caretrightarrow"
-                width={20}
-                height={16}
-              />
-            </LinkStyleTitleContainer>
+      // <BoxShadowContainer>
+      <OneCardComponent
+        $height="433px"
+        $overflowY={true}
+        $isheightChange={true}
+        $flexBasis={data > 983 ? false : true}
+      >
+        <>
+          <LinkStyleTitleContainer href="/topproducts">
+            <SpanContainer $bold={true}>{props.title}</SpanContainer>
+            <Image
+              src="/caretright.svg"
+              alt="caretrightarrow"
+              width={20}
+              height={16}
+            />
+          </LinkStyleTitleContainer>
 
-            {props.data.map((item: Data) => {
-              const itemName = checkIfStringIsUnderCharacter(`${item.name}`);
-              return (
-                <EachCardItemContainer key={item.id}>
-                  <NamePercentTypeContainer>
-                    <Image
-                      src={item.image || defaultProductImage}
-                      alt={item.name}
-                      width={25}
-                      height={25}
-                    />
-                    <div className="nameAndpercent">
-                      <SpanContainer $bold={true}>{itemName}</SpanContainer>
-                      <ProductPercentAndType>
-                        <SpanContainer
-                          $background="#f4f0ec"
-                          $bold={true}
-                          $padding={true}
-                        >
-                          {item.percent + "%"}
-                        </SpanContainer>
-                        <SpanContainer>{" " + item.type}</SpanContainer>
-                      </ProductPercentAndType>
-                    </div>
-                  </NamePercentTypeContainer>
-                  <ColumFlexContainerCard>
-                    <SpanContainer $bold={true}>SEK {item.price}</SpanContainer>
-                    <SpanContainer>CSV {item.cvrPercent}</SpanContainer>
-                  </ColumFlexContainerCard>
-                </EachCardItemContainer>
-              );
-            })}
-          </>
-        </OneCardComponent>
-      </BoxShadowContainer>
+          {props.data.map((item: Data) => {
+            const itemName = `${item.name}`;
+            return (
+              <EachCardItemContainer key={item.id}>
+                <NamePercentTypeContainer>
+                  <Image
+                    src={item.image || defaultProductImage}
+                    alt={item.name}
+                    width={25}
+                    height={25}
+                  />
+                  <NamePercentContainer>
+                    <SpanContainer $bold={true} $applyItemNameStyle={true}>
+                      {itemName}
+                    </SpanContainer>
+                    <ProductPercentAndType>
+                      <SpanContainer
+                        $background="#f4f0ec"
+                        $bold={true}
+                        $padding={true}
+                      >
+                        {item.percent + "%"}
+                      </SpanContainer>
+                      <SpanContainer>{" " + item.type}</SpanContainer>
+                    </ProductPercentAndType>
+                  </NamePercentContainer>
+                </NamePercentTypeContainer>
+                <ColumFlexContainerCard>
+                  <SpanContainer $bold={true} $nowrap={true}>
+                    SEK {item.price}
+                  </SpanContainer>
+                  <SpanContainer $nowrap={true}>
+                    CSV {item.cvrPercent}
+                  </SpanContainer>
+                </ColumFlexContainerCard>
+              </EachCardItemContainer>
+            );
+          })}
+        </>
+      </OneCardComponent>
     );
   }
   if (props.title === "Top posts" && isPostData(props)) {
     return (
-      <BoxShadowContainer>
-        <OneCardComponent
-          $height="433px"
-          $overflowY={true}
-          $isheightChange={true}
-        >
-          <>
-            <LinkStyleTitleContainer href="/topposts">
-              <SpanContainer $bold={true}>{props.title}</SpanContainer>
-              <Image
-                src="/caretright.svg"
-                alt="caretrightarrow"
-                width={20}
-                height={16}
-              />
-            </LinkStyleTitleContainer>
-            {props.data.map((item) => {
-              const itemName = checkIfStringIsUnderCharacter(item.name);
-              return (
-                <EachCardItemContainer key={item.id}>
-                  <NamePercentTypeContainer>
-                    <PostsImageStyled
-                      src={item.image || defaultProductImage}
-                      alt={item.name}
-                      width={35}
-                      height={35}
-                    />
-                    <OneContainerTabHeight>
-                      <SpanContainer $bold={true}>{itemName}</SpanContainer>
-                    </OneContainerTabHeight>
-                  </NamePercentTypeContainer>
-                  <ColumFlexContainerCard>
-                    <SpanContainer $bold={true}>SEK {item.price}</SpanContainer>
-                  </ColumFlexContainerCard>
-                </EachCardItemContainer>
-              );
-            })}
-          </>
-        </OneCardComponent>
-      </BoxShadowContainer>
+      <OneCardComponent
+        $height="433px"
+        $overflowY={true}
+        $isheightChange={true}
+        $flexBasis={data > 983 ? false : true}
+      >
+        <>
+          <LinkStyleTitleContainer href="/topposts">
+            <SpanContainer $bold={true}>{props.title}</SpanContainer>
+            <Image
+              src="/caretright.svg"
+              alt="caretrightarrow"
+              width={20}
+              height={16}
+            />
+          </LinkStyleTitleContainer>
+          {props.data.map((item) => {
+            const itemName = item.name;
+            return (
+              <EachCardItemContainer key={item.id}>
+                <NamePercentTypeContainer>
+                  <PostsImageStyled
+                    src={item.image || defaultProductImage}
+                    alt={item.name}
+                    width={35}
+                    height={35}
+                  />
+                  <OneContainerTabHeight>
+                    <SpanContainer $bold={true} $applyItemNameStyle={true}>
+                      {itemName}
+                    </SpanContainer>
+                  </OneContainerTabHeight>
+                </NamePercentTypeContainer>
+                <ColumFlexContainerCard>
+                  <SpanContainer $bold={true} $nowrap={true}>
+                    SEK {item.price}
+                  </SpanContainer>
+                </ColumFlexContainerCard>
+              </EachCardItemContainer>
+            );
+          })}
+        </>
+      </OneCardComponent>
     );
   }
   if (props.title === "Top stores" && isStoresData(props)) {
     return (
-      <BoxShadowContainer>
-        <OneCardComponent
-          $height="433px"
-          $overflowY={true}
-          $isheightChange={true}
-        >
-          <>
-            <LinkStyleTitleContainer href="/topstores">
-              <SpanContainer $bold={true}>{props.title}</SpanContainer>
-              <Image
-                src="/caretright.svg"
-                alt="caretrightarrow"
-                width={20}
-                height={16}
-              />
-            </LinkStyleTitleContainer>
-            {props.data.map((item) => {
-              const itemName = checkIfStringIsUnderCharacter(item.name);
-              return (
-                <EachCardItemContainer
-                  key={item.id}
-                  $padding="0.625rem 1.2rem;"
-                >
-                  <NamePercentTypeContainer>
-                    <SpanContainer $bold={true}>{itemName}</SpanContainer>
-                  </NamePercentTypeContainer>
-                  <ColumFlexContainerCard>
-                    <SpanContainer $bold={true}>SEK {item.price}</SpanContainer>
-                  </ColumFlexContainerCard>
-                </EachCardItemContainer>
-              );
-            })}
-          </>
-        </OneCardComponent>
-      </BoxShadowContainer>
+      // <BoxShadowContainer>
+      <OneCardComponent
+        $height="433px"
+        $overflowY={true}
+        $flexBasis={data > 983 ? false : true}
+        $isheightChange={true}
+      >
+        <>
+          <LinkStyleTitleContainer href="/topstores">
+            <SpanContainer $bold={true}>{props.title}</SpanContainer>
+            <Image
+              src="/caretright.svg"
+              alt="caretrightarrow"
+              width={20}
+              height={16}
+            />
+          </LinkStyleTitleContainer>
+          {props.data.map((item) => {
+            const itemName = item.name;
+            return (
+              <EachCardItemContainer key={item.id} $padding="0.625rem 1.2rem;">
+                <NamePercentTypeContainer>
+                  <SpanContainer $bold={true} $applyItemNameStyle={true}>
+                    {itemName}
+                  </SpanContainer>
+                </NamePercentTypeContainer>
+                <ColumFlexContainerCard>
+                  <SpanContainer $bold={true} $nowrap={true}>
+                    SEK {item.price}
+                  </SpanContainer>
+                </ColumFlexContainerCard>
+              </EachCardItemContainer>
+            );
+          })}
+        </>
+      </OneCardComponent>
     );
   }
 };

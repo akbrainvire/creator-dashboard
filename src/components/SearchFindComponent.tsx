@@ -23,7 +23,11 @@ const SearchFindComponent = (props: Props) => {
   console.log(router.query);
   return (
     <SearchFindContainer>
-      <HeadingContainer $applyStyle={false} $applyPadding={false}>
+      <HeadingContainer
+        $applyStyle={false}
+        $applyPadding={false}
+        $changeMargin={data > 1024 ? true : false}
+      >
         <ControlHorizontalScrollDetail>
           {data > 1024 ? (
             <CaretRightandLinkContainer>

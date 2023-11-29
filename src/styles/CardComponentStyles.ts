@@ -6,8 +6,14 @@ export const OneCardComponent = styled.div<{
   $height?: string;
   $overflowY?: boolean;
   $isheightChange?: boolean;
+  $flexBasis?: boolean;
 }>`
-  min-width: 390px;
+  flex-grow: 1;
+  flex-basis: ${(props) => (props.$flexBasis ? 1 : 0)};
+  /* min-width: 0; */
+  border-radius: 20px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  /* min-width: 350px; */
   height: ${(props) => (props.$height ? props.$height : "auto")};
 
   border-radius: 10px;
@@ -21,29 +27,63 @@ export const OneCardComponent = styled.div<{
 
   @media only screen and (max-width: 972px) {
     min-width: 0;
-    margin-bottom: 20px;
   }
 
   @media only screen and (max-width: 655px) {
     height: ${(props) => (props.$isheightChange ? "300px" : "auto")};
+    width: 100%;
   }
 `;
 
 export const CardsComponentContainer = styled.div`
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
+  /* width: 76.4rem; */
   flex-direction: row;
-  justify-content: space-between;
-  gap: 0.8rem;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 1.9rem;
   /* width: 76.25rem; */
   /* 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
   } */
 
-  @media only screen and (max-width: 972px) {
-    display: block;
+  @media only screen and (max-width: 983px) {
+    /* display: flex; */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: normal;
+    align-content: normal;
+    gap: 2rem;
+
+    &:nth-child(1) {
+      /* display: block; */
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+      align-self: auto;
+      order: 0;
+    }
+
+    &:nth-child(2) {
+      /* display: block; */
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+      align-self: auto;
+      order: 0;
+    }
+
+    &:nth-child(3) {
+      /* display: block; */
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+      align-self: auto;
+      order: 0;
+    }
   }
 `;
 
@@ -99,7 +139,7 @@ export const NormalTitleContainer = styled.div<{ $marginBottom?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 15px 32px;
+  padding: 2rem;
   box-sizing: border-box;
   border-bottom: ${(props) =>
     props.$marginBottom ? " 1px solid #dddddd" : "0"};
@@ -141,7 +181,7 @@ export const EachCardItemContainer = styled.div<{ $padding?: string }>`
   gap: 1rem;
   flex: 1 0 0;
   align-self: stretch;
-  padding: ${(props) => (props.$padding ? props.$padding : "0.625rem  1.2rem")};
+  padding: ${(props) => (props.$padding ? props.$padding : "0.625rem 2rem")};
   border-bottom: 1px solid #dddddd;
 `;
 
@@ -181,6 +221,8 @@ export const SpanContainer = styled.span<{
   $background?: string;
   $padding?: boolean;
   $nowrap?: boolean;
+
+  $applyItemNameStyle?: boolean;
 }>`
   /* min-width: 0;
   white-space: nowrap;
@@ -199,12 +241,32 @@ export const SpanContainer = styled.span<{
   padding: ${(props) => (props.$padding ? "0.2rem" : "0.3rem 0")};
 
   white-space: ${(props) => (props.$wrap ? "nowrap" : "")};
+
+  @media only screen and (max-width: 900px) {
+    ${(props) =>
+      props.$applyItemNameStyle &&
+      `
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+      width: 50vw;
+      overflow: hidden;
+    }
+      `}
+  }
+`;
+
+export const NamePercentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-sizing: border-box;
 `;
 
 export const ProductPercentAndType = styled.div`
-  margin-top: 0.3rem;
-  gap: 0.5rem;
   display: flex;
+  gap: 0.5rem;
 `;
 
 export const OneContainerTabHeight = styled.div`

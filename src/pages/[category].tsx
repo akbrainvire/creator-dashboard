@@ -1,6 +1,7 @@
 import {
   ColumFlexContainerCard,
   EachCardItemContainer,
+  NamePercentContainer,
   NamePercentTypeContainer,
   NormalTitleContainer,
   OneCardComponent,
@@ -46,9 +47,9 @@ const TopProducts = (props: Props) => {
                       ) : (
                         ""
                       )}
-                      <div className="nameAndpercent">
-                        <SpanContainer $bold={true}>
-                          {checkIfStringIsUnderCharacter(item.name)}
+                      <NamePercentContainer>
+                        <SpanContainer $applyItemNameStyle={true} $bold={true}>
+                          {item.name}
                         </SpanContainer>
 
                         {props.title === "Top products" ? (
@@ -65,15 +66,17 @@ const TopProducts = (props: Props) => {
                         ) : (
                           ""
                         )}
-                      </div>
+                      </NamePercentContainer>
                     </NamePercentTypeContainer>
 
                     <ColumFlexContainerCard>
-                      <SpanContainer $bold={true}>
+                      <SpanContainer $bold={true} $nowrap={true}>
                         SEK {item.price}
                       </SpanContainer>
                       {props.title === "Top products" ? (
-                        <SpanContainer>CSV {item.cvrPercent}</SpanContainer>
+                        <SpanContainer $nowrap={true}>
+                          CSV {item.cvrPercent}
+                        </SpanContainer>
                       ) : (
                         ""
                       )}

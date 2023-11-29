@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const GraphContainer = styled.div`
   // height: 274px;
   display: flex;
-  margin-top: 23px;
+  /* margin-top: 23px; */
   flex-direction: column;
   border-radius: 10px;
   gap: 16px;

@@ -34,6 +34,7 @@ export const ButtonStyled = styled.button<{
 export const HeadingContainer = styled.div<{
   $applyStyle?: boolean;
   $applyPadding?: boolean;
+  $changeMargin?: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -70,7 +71,7 @@ export const HeadingContainer = styled.div<{
     margin-top: 2rem;
   }
   @media only screen and (max-width: 920px) {
-    margin-top: ${(props) => (props.$applyPadding ? "2rem" : "1.5rem")};
+    margin-top: ${(props) => (props.$changeMargin ? "0" : "2rem")};
   }
 `;
 
@@ -204,21 +205,31 @@ export const BoxShadowContainer = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   /* justify-content: center; */
   /* align-items: center; */
+  padding: 2rem 0;
+  max-width: 1320px;
+  margin: auto;
 
-  margin: 3.125rem 9.375rem;
-
-  @media only screen and (max-width: 1100px) {
-    margin: 2.125rem 5.375rem;
+  @media only screen and (max-width: 1400px) {
+    max-width: 1200px;
   }
 
-  @media only screen and (max-width: 920px) {
-    margin: 1.125rem 3.375rem;
+  @media only screen and (max-width: 1200px) {
+    max-width: 1000px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    max-width: 770px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    max-width: 500px;
   }
 
   @media only screen and (max-width: 500px) {
-    margin: 2.25rem 1rem;
+    max-width: 90%;
   }
 `;
 
@@ -227,7 +238,7 @@ export const SearchFindContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 31px;
+  /* margin-bottom: 31px; */
 `;
 
 export const SearchFindLinkContainer = styled.div`

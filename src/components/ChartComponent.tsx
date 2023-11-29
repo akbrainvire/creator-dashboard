@@ -24,8 +24,11 @@ ChartJS.register(
 type Props = {};
 
 const ChartComponent = (props: Props) => {
+  {
+    console.log(props, "Varun");
+  }
   const data = {
-    label: ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
+    labels: ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
     datasets: [
       {
         label: "Sales of the Week",
@@ -49,6 +52,7 @@ const ChartComponent = (props: Props) => {
 
   return (
     <div>
+      {/* {console.log("varun")} */}
       <Line data={data} options={options}></Line>
     </div>
   );
@@ -56,4 +60,10 @@ const ChartComponent = (props: Props) => {
 
 export default ChartComponent;
 
-export async function getServerSideProps() {}
+// export async function getServerSideProps() {
+//   return {
+//     props: {
+//       id: Math.random(),
+//     },
+//   };
+// }
