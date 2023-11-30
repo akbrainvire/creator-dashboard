@@ -12,9 +12,15 @@ import {
 import Image from "next/image";
 type Props = {
   selectValueFromtoTo: string;
+  getSelectedDate: (value: any) => void;
+  doesDateChange: () => void;
 };
 
-const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
+const DatePickerComponent = ({
+  selectValueFromtoTo,
+  getSelectedDate,
+  doesDateChange,
+}: Props) => {
   var date = new Date();
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
   var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -27,6 +33,9 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
     " - " +
     (endDate ? format(endDate, "do LLL") : +"");
   const [calculatedDate, setCalculatedDate] = useState(calculateValue);
+  // console.log(calculatedDate, "calc");
+
+  getSelectedDate(calculatedDate);
 
   useEffect(() => {
     if (selectValueFromtoTo === "Yesterday") {
@@ -121,7 +130,7 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
         formatWeekDay={(nameOfDay) => nameOfDay.substring(0, 3)}
         renderCustomHeader={renderCustomHeader}
         onChange={(update: any) => {
-          const d = new Date(update);
+          // const d = new Date(update);
           console.log(update, "update");
           setStartDate(update[0]);
           setEndDate(update[1]);
@@ -133,6 +142,7 @@ const DatePickerComponent = ({ selectValueFromtoTo }: Props) => {
               format(startDate, "do LLL") + " - " + format(endDate, "do LLL");
             return returnDate;
           });
+          doesDateChange();
           // setDateRange(update);
         }}
         // value={calculatedDate}

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const GraphContainer = styled.div`
   // height: 274px;
+  transition: none;
   display: flex;
   /* margin-top: 23px; */
   flex-direction: column;

@@ -6,23 +6,20 @@ import CardComponent from "@/components/CardComponent";
 import { CardsComponentContainer } from "@/styles/CardComponentStyles";
 import { Data } from "@/types";
 import TitleOfPPS from "@/components/TitleOfPPS";
+import GraphAndHeader from "@/components/GraphAndHeader";
 
 type Props = {
   productData: Data[];
   postData: Data[];
   storesData: Data[];
+  graphData: { data: []; name: string; labels: [] }[];
 };
 
 const Dashboard = (props: Props) => {
   return (
     <MainContainer>
       <TitleOfPPS title="My dashboard" show={true} />
-      <div className="options of chart">
-        <OptionsChart isApplyStyle={false} />
-      </div>
-      <div className="graph">
-        <Graph />
-      </div>
+      <GraphAndHeader />
       <CardsComponentContainer>
         <CardComponent data={props.productData} title="Top products" />
         <CardComponent data={props.postData} title="Top posts" />
@@ -47,11 +44,16 @@ export async function getServerSideProps() {
     "http://localhost:3000/api/topstoresfetch"
   );
   const storesData = await storesResponse.json();
+
+  // const graphResponse = await fetch("");
+  // const graphData = await graphResponse.json();
+
   return {
     props: {
       productData: data,
       postData,
       storesData,
+      // graphData,
     },
   };
 }
