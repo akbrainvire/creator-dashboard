@@ -35,41 +35,42 @@ const TopProducts = (props: Props) => {
               {props.productData.map((item: Data) => {
                 return (
                   <EachCardItemContainer key={item.id}>
-                    <NamePercentTypeContainer>
-                      {props.title === "Top posts" ||
-                      props.title === "Top products" ? (
+                    {props.title === "Top posts" ||
+                    props.title === "Top products" ? (
+                      <NamePercentTypeContainer $width="5%" $applyMwidth={true}>
                         <Image
                           src={item.image || defaultProductImage}
                           alt={item.name}
                           width={25}
                           height={25}
                         />
+                      </NamePercentTypeContainer>
+                    ) : (
+                      ""
+                    )}
+
+                    <NamePercentContainer $width="80%" $applyMwidth={true}>
+                      <SpanContainer $applyItemNameStyle={true} $bold={true}>
+                        {item.name}
+                      </SpanContainer>
+
+                      {props.title === "Top products" ? (
+                        <ProductPercentAndType>
+                          <SpanContainer
+                            $background="#f4f0ec"
+                            $bold={true}
+                            $padding={true}
+                          >
+                            {item.percent + "%"}
+                          </SpanContainer>
+                          <SpanContainer>{" " + item.type}</SpanContainer>
+                        </ProductPercentAndType>
                       ) : (
                         ""
                       )}
-                      <NamePercentContainer>
-                        <SpanContainer $applyItemNameStyle={true} $bold={true}>
-                          {item.name}
-                        </SpanContainer>
+                    </NamePercentContainer>
 
-                        {props.title === "Top products" ? (
-                          <ProductPercentAndType>
-                            <SpanContainer
-                              $background="#f4f0ec"
-                              $bold={true}
-                              $padding={true}
-                            >
-                              {item.percent + "%"}
-                            </SpanContainer>
-                            <SpanContainer>{" " + item.type}</SpanContainer>
-                          </ProductPercentAndType>
-                        ) : (
-                          ""
-                        )}
-                      </NamePercentContainer>
-                    </NamePercentTypeContainer>
-
-                    <ColumFlexContainerCard>
+                    <ColumFlexContainerCard $applyMwidth={true} $width="15%">
                       <SpanContainer $bold={true} $nowrap={true}>
                         SEK {item.price}
                       </SpanContainer>

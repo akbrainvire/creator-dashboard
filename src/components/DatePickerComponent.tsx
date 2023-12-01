@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import format from "date-fns/format";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,7 +11,7 @@ import {
 import Image from "next/image";
 type Props = {
   selectValueFromtoTo: string;
-  getSelectedDate: (value: any) => void;
+  getSelectedDate: (value: any, value2: any) => void;
   doesDateChange: () => void;
 };
 
@@ -25,74 +24,70 @@ const DatePickerComponent = ({
   var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
   var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-  const [startDate, setStartDate] = useState(firstDay);
-  const [endDate, setEndDate] = useState(lastDay);
-
-  let calculateValue =
-    format(startDate, "do LLL") +
-    " - " +
-    (endDate ? format(endDate, "do LLL") : +"");
-  const [calculatedDate, setCalculatedDate] = useState(calculateValue);
-  // console.log(calculatedDate, "calc");
-
-  getSelectedDate(calculatedDate);
+  const [datee, setDate] = useState({
+    firstDay,
+    lastDay,
+  });
 
   useEffect(() => {
-    if (selectValueFromtoTo === "Yesterday") {
-      var yesterday = new Date(Date.now() - 864e5);
-      setStartDate(yesterday);
-      setEndDate(yesterday);
-      setCalculatedDate(() => {
-        let returnDate =
-          format(yesterday, "do LLL") + " - " + format(yesterday, "do LLL");
-        return returnDate;
-      });
-    } else if (selectValueFromtoTo === "This Week") {
-      var curr = new Date();
-      var firstdayWeek = new Date(curr.setDate(curr.getDate() - curr.getDay()));
-      var lastdayWeek = new Date(
-        curr.setDate(curr.getDate() - curr.getDay() + 6)
-      );
+    const updateDateRange = (start: any, end: any) => {
+      console.log(start, end, "start-end");
+      setDate((prevDate) => ({
+        ...prevDate,
+        firstDay: start,
+        lastDay: end,
+      }));
+    };
 
-      setStartDate(firstdayWeek);
-      setEndDate(lastdayWeek);
-      setCalculatedDate(() => {
-        let returnDate =
-          format(firstdayWeek, "do LLL") +
-          " - " +
-          format(lastdayWeek, "do LLL");
-        return returnDate;
-      });
-    } else if (selectValueFromtoTo === "Last Week") {
-      var curr = new Date();
-      var firstdayWeek = new Date(
-        curr.setDate(curr.getDate() - curr.getDay() - 7)
-      );
-      var lastdayWeek = new Date(
-        curr.setDate(curr.getDate() - curr.getDay() + 6)
-      );
+    switch (selectValueFromtoTo) {
+      case "Yesterday": {
+        //for demo purpose only
 
-      setStartDate(firstdayWeek);
-      setEndDate(lastdayWeek);
-      setCalculatedDate(() => {
-        let returnDate =
-          format(firstdayWeek, "do LLL") +
-          " - " +
-          format(lastdayWeek, "do LLL");
-        return returnDate;
-      });
-    } else if (selectValueFromtoTo === "Last Month") {
-      var date = new Date();
-      var firstDay = new Date(date.getFullYear(), date.getMonth() - 1, 1);
-      var lastDay = new Date(date.getFullYear(), date.getMonth(), 0);
+        // const currentDate = new Date();
 
-      setStartDate(firstDay);
-      setEndDate(lastDay);
-      setCalculatedDate(() => {
-        let returnDate =
-          format(firstDay, "do LLL") + " - " + format(lastDay, "do LLL");
-        return returnDate;
-      });
+        // Calculate the date of yesterday
+        // const dayBeforeYesterday = new Date(currentDate);
+        // dayBeforeYesterday.setDate(currentDate.getDate() - 2);
+        // const yesterday = new Date(Date.now() - 864e5);
+
+        // updateDateRange(yesterday, currentDate);
+        // break;
+
+        //real code:
+        const yesterday = new Date(Date.now() - 864e5);
+        updateDateRange(yesterday, yesterday);
+        break;
+      }
+      case "This Week": {
+        const curr = new Date();
+        const firstdayWeek = new Date(
+          curr.setDate(curr.getDate() - curr.getDay())
+        );
+        const lastdayWeek = new Date(
+          curr.setDate(curr.getDate() - curr.getDay() + 6)
+        );
+        updateDateRange(firstdayWeek, lastdayWeek);
+        break;
+      }
+      case "Last Week": {
+        const curr = new Date();
+        const firstdayWeek = new Date(
+          curr.setDate(curr.getDate() - curr.getDay() - 7)
+        );
+        const lastdayWeek = new Date(
+          curr.setDate(curr.getDate() - curr.getDay() + 6)
+        );
+        updateDateRange(firstdayWeek, lastdayWeek);
+        break;
+      }
+      case "Last Month": {
+        const date = new Date();
+        const firstDay = new Date(date.getFullYear(), date.getMonth() - 1, 1);
+        const lastDay = new Date(date.getFullYear(), date.getMonth(), 0);
+        updateDateRange(firstDay, lastDay);
+        break;
+      }
+      default:
     }
   }, [selectValueFromtoTo]);
 
@@ -120,32 +115,27 @@ const DatePickerComponent = ({
     );
   };
 
+  useEffect(() => {
+    getSelectedDate(datee.firstDay, datee.lastDay);
+  }, [datee.firstDay, datee.lastDay, doesDateChange, getSelectedDate]);
+
   return (
     <DatePickerWrapper>
       <DatePickerContainer
         selectsRange={true}
-        startDate={startDate}
-        endDate={endDate}
-        value={calculatedDate}
+        startDate={datee.firstDay}
+        endDate={datee.lastDay}
+        value={`${format(datee.firstDay, "do LLL")} - ${
+          datee.lastDay ? format(datee.lastDay, "do LLL") : ""
+        }`}
         formatWeekDay={(nameOfDay) => nameOfDay.substring(0, 3)}
         renderCustomHeader={renderCustomHeader}
         onChange={(update: any) => {
-          // const d = new Date(update);
-          console.log(update, "update");
-          setStartDate(update[0]);
-          setEndDate(update[1]);
-
-          setCalculatedDate(() => {
-            const startDate = new Date(update[0]);
-            const endDate = new Date(update[1]);
-            let returnDate =
-              format(startDate, "do LLL") + " - " + format(endDate, "do LLL");
-            return returnDate;
+          setDate({
+            firstDay: update[0],
+            lastDay: update[1],
           });
-          doesDateChange();
-          // setDateRange(update);
         }}
-        // value={calculatedDate}
       />
     </DatePickerWrapper>
   );

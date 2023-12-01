@@ -19,7 +19,6 @@ export const OneCardComponent = styled.div<{
   border-radius: 10px;
   gap: 16px;
   overflow-y: ${(props) => (props.$height ? "scroll" : "")};
-  background-color: rgba(255, 255, 255, 0.4);
 
   &::-webkit-scrollbar {
     display: none;
@@ -36,21 +35,13 @@ export const OneCardComponent = styled.div<{
 `;
 
 export const CardsComponentContainer = styled.div`
-  /* margin-top: 20px; */
   display: flex;
-  /* width: 76.4rem; */
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.9rem;
-  /* width: 76.25rem; */
-  /* 
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-  } */
 
   @media only screen and (max-width: 983px) {
-    /* display: flex; */
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
@@ -59,7 +50,6 @@ export const CardsComponentContainer = styled.div`
     gap: 2rem;
 
     &:nth-child(1) {
-      /* display: block; */
       flex-grow: 0;
       flex-shrink: 1;
       flex-basis: auto;
@@ -68,7 +58,6 @@ export const CardsComponentContainer = styled.div`
     }
 
     &:nth-child(2) {
-      /* display: block; */
       flex-grow: 0;
       flex-shrink: 1;
       flex-basis: auto;
@@ -77,7 +66,6 @@ export const CardsComponentContainer = styled.div`
     }
 
     &:nth-child(3) {
-      /* display: block; */
       flex-grow: 0;
       flex-shrink: 1;
       flex-basis: auto;
@@ -86,27 +74,6 @@ export const CardsComponentContainer = styled.div`
     }
   }
 `;
-
-// export const Title = styled.div`
-//   position: sticky;
-//   background-color: rgba(255, 255, 255, 1);
-//   top: 0;
-
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   padding: 22px 50px;
-//   box-sizing: border-box;
-//   border-bottom: 1px solid #dddddd;
-//   align-items: center;
-
-//   & > span {
-//     font-size: 22px;
-//     font-weight: 500;
-//     line-height: 26px;
-//     letter-spacing: 0em;
-//   }
-// `;
 
 export const LinkStyleTitleContainer = styled(Link)`
   position: sticky;
@@ -122,7 +89,7 @@ export const LinkStyleTitleContainer = styled(Link)`
   border-bottom: 1px solid #dddddd;
   align-items: center;
   text-decoration: none;
-
+  z-index: 100;
   & > span {
     font-size: 22px;
     line-height: 26px;
@@ -144,7 +111,6 @@ export const NormalTitleContainer = styled.div<{ $marginBottom?: boolean }>`
   border-bottom: ${(props) =>
     props.$marginBottom ? " 1px solid #dddddd" : "0"};
   align-items: center;
-  /* z-index: 100; */
   & > span {
     font-size: 21px;
     line-height: 20px;
@@ -168,35 +134,38 @@ export const NormalTitleContainer = styled.div<{ $marginBottom?: boolean }>`
 export const PostsImageStyled = styled(Image)``;
 
 export const EachCardItemContainer = styled.div<{ $padding?: string }>`
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-  padding: 0.625rem 2rem; */
   height: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
   flex: 1 0 0;
   align-self: stretch;
   padding: ${(props) => (props.$padding ? props.$padding : "0.625rem 2rem")};
   border-bottom: 1px solid #dddddd;
 `;
 
-export const NamePercentTypeContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1 0 0;
-  align-self: stretch;
+export const NamePercentTypeContainer = styled.div<{
+  $width?: string;
+  $applyMwidth?: boolean;
+  $mobileW?: string;
+}>`
+  width: ${(props) => (props.$width ? props.$width : "100%")};
+
+  @media only screen and (max-width: 768px) {
+    width: ${(props) => (props.$width ? props.$width : "10%")};
+  }
+  @media only screen and (max-width: 500px) {
+    width: ${(props) => (props.$applyMwidth ? "15%" : props.$mobileW)};
+  }
 `;
 
-export const ColumFlexContainerCard = styled.div`
+export const ColumFlexContainerCard = styled.div<{
+  $width?: string;
+  $applyMwidth?: boolean;
+  $mobileW?: string;
+}>`
   display: flex;
   flex-direction: column;
-  color: #3a3a3a;
   align-items: end;
 
   #percent {
@@ -208,6 +177,11 @@ export const ColumFlexContainerCard = styled.div`
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.02738rem;
+  }
+  width: ${(props) => (props.$applyMwidth ? props.$width : "")};
+
+  @media only screen and (max-width: 500px) {
+    width: ${(props) => (props.$applyMwidth ? "25%" : props.$mobileW)};
   }
 `;
 
@@ -221,12 +195,15 @@ export const SpanContainer = styled.span<{
   $background?: string;
   $padding?: boolean;
   $nowrap?: boolean;
-
+  $widthWrap?: boolean;
   $applyItemNameStyle?: boolean;
 }>`
   /* min-width: 0;
   white-space: nowrap;
   text-overflow: ellipsis; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   font-size: ${(props) => (props.$bold ? "0.875rem" : "0.75rem")};
   font-style: normal;
@@ -238,30 +215,28 @@ export const SpanContainer = styled.span<{
   /* height: 50px; */
   background-color: ${(props) => (props.$background ? props.$background : "")};
   /* margin: 0.3rem 0; */
-  padding: ${(props) => (props.$padding ? "0.2rem" : "0.3rem 0")};
+  /* padding: ${(props) => (props.$padding ? "0.2rem" : "0.3rem 0")}; */
 
   white-space: ${(props) => (props.$wrap ? "nowrap" : "")};
-
-  @media only screen and (max-width: 900px) {
-    ${(props) =>
-      props.$applyItemNameStyle &&
-      `
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      text-decoration: none;
-      display: inline-block;
-      width: 50vw;
-      overflow: hidden;
-    }
-      `}
-  }
 `;
 
-export const NamePercentContainer = styled.div`
+export const NamePercentContainer = styled.div<{
+  $width?: string;
+  $applyMwidth?: boolean;
+  $mobileW?: string;
+}>`
+  width: ${(props) => (props.$width ? props.$width : "100%")};
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 768px) {
+    width: 75%;
+  }
+  @media only screen and (max-width: 500px) {
+    width: ${(props) => (props.$applyMwidth ? "60%" : props.$mobileW)};
+  }
 `;
 
 export const ProductPercentAndType = styled.div`
@@ -269,7 +244,11 @@ export const ProductPercentAndType = styled.div`
   gap: 0.5rem;
 `;
 
-export const OneContainerTabHeight = styled.div`
+export const OneContainerTabHeight = styled.div<{ $width?: string }>`
   box-sizing: border-box;
+  width: ${(props) => (props.$width ? props.$width : "100%")};
   /* height: 50px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

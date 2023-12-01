@@ -1,35 +1,45 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import OptionsChart from "./OptionsChart";
 import Graph from "./Graph";
 
 type Props = {};
 
 const GraphAndHeader = (props: Props) => {
-  const [selectedvalue, setSelectedValue] = useState<any>("This Month");
-  const [selectedDate, setSelectedDate] = useState<any>();
+  var date = new Date();
+  const [startDate, setStartDate] = useState(
+    new Date(date.getFullYear(), date.getMonth(), 1)
+  );
+  const [endDate, setendDate] = useState(
+    new Date(date.getFullYear(), date.getMonth() + 1, 0)
+  );
 
-  const getSelected = (value: any) => {
-    setSelectedValue(value);
+  const [selectedDate, setSelectedDate] = useState<any>({
+    startDate,
+    endDate,
+  });
+
+  const getSelectedDate = (startDate: any, endDate: any) => {
+    console.log(startDate, endDate);
+    setStartDate(startDate);
+    setendDate(endDate);
   };
 
-  const getSelectedDate = (value: any) => {
-    console.log(value);
-
-    setSelectedDate(value);
-    // setFromTo([startDate, endDate]);
-  };
-  //   console.log(selectedvalue);
+  useEffect(() => {
+    setSelectedDate((prev: any) => {
+      return { ...prev, startDate, endDate };
+    });
+  }, [endDate, startDate]);
   return (
     <Fragment>
       <div className="options of chart">
         <OptionsChart
           isApplyStyle={false}
-          getSelectedValue={getSelected}
+          // getSelectedValue={getSelected}
           getSelectedDateValue={getSelectedDate}
         />
       </div>
       <div className="graph">
-        <Graph selectedValue={selectedvalue} selectedDate={selectedDate} />
+        <Graph selectedDate={selectedDate} />
       </div>
     </Fragment>
   );

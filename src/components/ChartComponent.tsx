@@ -1,4 +1,5 @@
 import React, { use, useEffect, useState } from "react";
+import graphData from "../constants/GraphDataNov.json";
 
 import { Line } from "react-chartjs-2";
 
@@ -11,6 +12,7 @@ import {
   Title,
   Legend,
 } from "chart.js";
+import format from "date-fns/format";
 
 ChartJS.register(
   LineElement,
@@ -22,63 +24,77 @@ ChartJS.register(
 );
 
 type Props = {
-  selectedValue: any;
+  // selectedValue: any;
   selectedDate: any;
 };
 
 const ChartComponent = (props: Props) => {
-  //   const [graphDataset, setGraphDataSet] = useState(props.selectedValue.data);
-  //   const [graphLabeldata, setGraphLabeldata] = useState(
-  //     props.selectedValue.labels
-  //   );
+  const [graphDataset, setGraphDataSet] = useState(graphData);
 
-  // console.log(props.selectedValue, "selectedValue");
-  // useEffect(() => {
-  //   // console.log(props.selectedDate);
+  useEffect(() => {
+    // console.log(props.selectedDate.startDate, "typeof");
+    if (props.selectedDate.startDate && props.selectedDate.endDate) {
+      // console.log(stringStart.indexOf("-"), typeof stringEnd);
 
-  //   if (props.selectedDate) {
-  //     const valueS = props.selectedDate.split(" ");
-  //     // const findIndexofSecondSpace = valueS.indexOf('-');
-  //     const startDate = valueS[0] + valueS[1];
-  //     const endDate = valueS[3] + valueS[4];
-  //     const date = startDate + " " + endDate;
-  //     // console.log(startDate, endDate, valueS);
+      const startDatee = new Date(props.selectedDate.startDate);
+      const endDatee = new Date(props.selectedDate.endDate);
 
-  //     if (valueS[1] === "Nov") {
-  //       const setLabels = props.selectedValue.labels.splice(
-  //         30 + valueS[0],
-  //         30 + valueS[3]
-  //       );
-  //       const setData = props.selectedValue.data.splice(
-  //         30 + valueS[0],
-  //         30 + valueS[3]
-  //       );
+      const filtered = graphData.filter((item) => {
+        // const date = item.date;
+        // const split = date.indexOf("-");
+        // const splitEnd = stringEnd.indexOf("-");
+        // const splitStart = stringStart.indexOf("-");
+        // let data = date.slice(0, split);
+        // let start = stringStart.slice(0, splitStart);
+        // let end = stringEnd.slice(0, splitEnd);
 
-  //       setGraphDataSet(setData);
-  //       setGraphLabeldata(setLabels);
-  //     } else if (valueS[1] === "Oct") {
-  //       const setLabels = props.selectedValue.labels.splice(
-  //         valueS[0],
-  //         valueS[3]
-  //       );
-  //       const setData = props.selectedValue.data.splice(valueS[0], valueS[3]);
+        // let startMon = stringStart.slice(splitStart + 1, splitStart + 2);
+        // let endMon = stringEnd.slice(splitEnd + 1, splitEnd + 2);
+        // console.log(data, start, end, "data");
+        // console.log(data >= start && date <= end);
+        // console.log(graphDataset, " graphdataset");
+        // if (data >= start && date <= end) {
+        //   return data >= start && date <= end;
+        // }
 
-  //       setGraphDataSet(setData);
-  //       setGraphLabeldata(setLabels);
-  //     }
-  //   }
-  //   // const indexOfStartDate = graphD[0].labels.indexOf(startDate);
-  //   // const indexOfEndDate = graphD[0].labels.indexOf(endDate);
+        // return;
 
-  //   // const splicedData = graphD.splice(startDate, )
-  // }, [props.selectedDate]);
-  // console.log(graphDataset, graphLabeldata);
+        function convertDateFormat(dateString: string) {
+          const [day, month, year] = dateString.split("-");
+          return `${year}-${month}-${day}`;
+        }
+        const currentDate = new Date(convertDateFormat(item.date));
+        console.log(
+          currentDate >= startDatee && currentDate <= endDatee,
+          console.log(startDatee),
+          console.log(endDatee),
+          console.log(currentDate),
+          "currentDate"
+        );
+        //Testing code
+        // I have to use this to get the yesterday value in Graph
+        const oneDayBefore = new Date(startDatee);
+        oneDayBefore.setDate(startDatee.getDate() - 1);
+
+        const oneDayAfter = new Date(endDatee);
+        oneDayAfter.setDate(endDatee.getDate() + 1);
+
+        return currentDate >= oneDayBefore && currentDate <= oneDayAfter;
+
+        //real Code
+        // return currentDate >= startDatee && currentDate <= endDatee;
+      });
+      console.log(filtered, "filtered");
+      setGraphDataSet(filtered);
+    }
+  }, [props.selectedDate]);
+
   const data = {
-    labels: props.selectedValue.labels,
+    labels: graphDataset.map((item) => item.date),
     datasets: [
       {
-        label: "Sales of the Week",
-        data: props.selectedValue.data,
+        label: "Sales",
+        data: graphDataset.map((item) => item.value),
         backgroundColor: "aqua",
         borderColor: "black",
         pointBorderColor: "rgb(255, 99, 132)",
@@ -94,6 +110,7 @@ const ChartComponent = (props: Props) => {
         display: false, // Hide x-axis
       },
       y: {
+        beginAtZero: true,
         display: false, // Hide y-axis
       },
     },
@@ -119,11 +136,3 @@ const ChartComponent = (props: Props) => {
 };
 
 export default ChartComponent;
-
-// export async function getServerSideProps() {
-//   return {
-//     props: {
-//       id: Math.random(),
-//     },
-//   };
-// }

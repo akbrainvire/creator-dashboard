@@ -78,30 +78,37 @@ const CardComponent = (props: PropsData) => {
             const itemName = `${item.name}`;
             return (
               <EachCardItemContainer key={item.id}>
-                <NamePercentTypeContainer>
+                <NamePercentTypeContainer $width="10%">
                   <Image
                     src={item.image || defaultProductImage}
                     alt={item.name}
                     width={25}
                     height={25}
                   />
-                  <NamePercentContainer>
-                    <SpanContainer $bold={true} $applyItemNameStyle={true}>
+                </NamePercentTypeContainer>
+                <NamePercentContainer $width="80%">
+                  <OneContainerTabHeight $width="100%">
+                    <SpanContainer
+                      $bold={true}
+                      $applyItemNameStyle={true}
+                      $widthWrap={true}
+                    >
                       {itemName}
                     </SpanContainer>
-                    <ProductPercentAndType>
-                      <SpanContainer
-                        $background="#f4f0ec"
-                        $bold={true}
-                        $padding={true}
-                      >
-                        {item.percent + "%"}
-                      </SpanContainer>
-                      <SpanContainer>{" " + item.type}</SpanContainer>
-                    </ProductPercentAndType>
-                  </NamePercentContainer>
-                </NamePercentTypeContainer>
-                <ColumFlexContainerCard>
+                  </OneContainerTabHeight>
+                  <ProductPercentAndType>
+                    <SpanContainer
+                      $background="#f4f0ec"
+                      $bold={true}
+                      $padding={true}
+                    >
+                      {item.percent + "%"}
+                    </SpanContainer>
+                    <SpanContainer>{" " + item.type}</SpanContainer>
+                  </ProductPercentAndType>
+                </NamePercentContainer>
+
+                <ColumFlexContainerCard $width="10%">
                   <SpanContainer $bold={true} $nowrap={true}>
                     SEK {item.price}
                   </SpanContainer>
@@ -138,20 +145,25 @@ const CardComponent = (props: PropsData) => {
             const itemName = item.name;
             return (
               <EachCardItemContainer key={item.id}>
-                <NamePercentTypeContainer>
+                <NamePercentTypeContainer $width="15%">
                   <PostsImageStyled
                     src={item.image || defaultProductImage}
                     alt={item.name}
                     width={35}
                     height={35}
                   />
-                  <OneContainerTabHeight>
-                    <SpanContainer $bold={true} $applyItemNameStyle={true}>
-                      {itemName}
-                    </SpanContainer>
-                  </OneContainerTabHeight>
                 </NamePercentTypeContainer>
-                <ColumFlexContainerCard>
+                <OneContainerTabHeight $width="70%">
+                  <SpanContainer
+                    $bold={true}
+                    $applyItemNameStyle={true}
+                    $widthWrap={true}
+                  >
+                    {itemName}
+                  </SpanContainer>
+                </OneContainerTabHeight>
+
+                <ColumFlexContainerCard $width="15%">
                   <SpanContainer $bold={true} $nowrap={true}>
                     SEK {item.price}
                   </SpanContainer>
@@ -186,12 +198,16 @@ const CardComponent = (props: PropsData) => {
             const itemName = item.name;
             return (
               <EachCardItemContainer key={item.id} $padding="0.625rem 1.2rem;">
-                <NamePercentTypeContainer>
-                  <SpanContainer $bold={true} $applyItemNameStyle={true}>
+                <OneContainerTabHeight $width="80%">
+                  <SpanContainer
+                    $bold={true}
+                    $applyItemNameStyle={true}
+                    $widthWrap={true}
+                  >
                     {itemName}
                   </SpanContainer>
-                </NamePercentTypeContainer>
-                <ColumFlexContainerCard>
+                </OneContainerTabHeight>
+                <ColumFlexContainerCard $width="20%">
                   <SpanContainer $bold={true} $nowrap={true}>
                     SEK {item.price}
                   </SpanContainer>

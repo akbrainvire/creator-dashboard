@@ -8,13 +8,12 @@ import format from "date-fns/format";
 // import RangeDatePicker from "./RangeDatePicker";
 type Props = {
   isApplyStyle: boolean;
-  getSelectedValue: (value: string) => void;
-  getSelectedDateValue: (value: any) => void;
+  // getSelectedValue: (value: string) => void;
+  getSelectedDateValue?: (value: any, value2: any) => void;
 };
 
 const OptionsChart = (props: Props) => {
   const [selected, setSelected] = useState("");
-  const [selectedDate, setSelectedDate] = useState<any>([]);
   const { data } = useWindowDimension();
 
   const onChangeHandler = (value: string) => {
@@ -22,13 +21,14 @@ const OptionsChart = (props: Props) => {
     setSelected(value);
   };
 
-  props.getSelectedValue(selected);
+  // props.getSelectedValue(selected);
 
-  const getSelectedDate = (dateSelected: any) => {
-    // console.log(dateSelected);
+  const getSelectedDate = (startDate: any, endDate: any) => {
+    // console.log(startDate, endDate);
     // props.getSelectedValue(dateSelected);
-
-    props.getSelectedDateValue(dateSelected);
+    if (props.getSelectedDateValue) {
+      props.getSelectedDateValue(startDate, endDate);
+    }
     // setSelectedDate([format(startDate, "do LLL"), format(endDate, "do LLL")]);
   };
 
