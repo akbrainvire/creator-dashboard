@@ -6,21 +6,15 @@ import {
 import React, { useEffect, useState } from "react";
 import ChartComponent from "./ChartComponent";
 import { BoxShadowContainer } from "@/styles/indexStyle";
-import Image from "next/image";
 import graphImage from "../../public/graph.svg";
 import useWindowDimension from "../../hooks/useWindowDimension";
 import SCEarning from "./SCEarning";
 type Props = {
   selectedDate: any;
-  // selectedDate: any;
 };
 
 const Graph = (props: Props) => {
-  // const [graphData, setGraphData] = useState({});
-
-  // console.log(graphData, "GraphData");
   const { data } = useWindowDimension();
-  // console.log(props.selectedDate, "graphData");
   return (
     <BoxShadowContainer>
       <GraphContainer>
@@ -32,10 +26,7 @@ const Graph = (props: Props) => {
           ""
         )}
         {/* <StyledGraphImage src={graphImage} alt="graph" /> */}
-        <ChartComponent
-          // selectedValue={graphData}
-          selectedDate={props.selectedDate}
-        />
+        <ChartComponent selectedDate={props.selectedDate} />
         <div
           style={{
             color: "black",

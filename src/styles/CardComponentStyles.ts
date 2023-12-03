@@ -131,7 +131,12 @@ export const NormalTitleContainer = styled.div<{ $marginBottom?: boolean }>`
   }
 `;
 
-export const PostsImageStyled = styled(Image)``;
+export const ImageStyled = styled(Image)`
+  @media only screen and (max-width: 768px) {
+    width: 25px;
+    height: 25px;
+  }
+`;
 
 export const EachCardItemContainer = styled.div<{ $padding?: string }>`
   height: 50px;
@@ -218,6 +223,10 @@ export const SpanContainer = styled.span<{
   /* padding: ${(props) => (props.$padding ? "0.2rem" : "0.3rem 0")}; */
 
   white-space: ${(props) => (props.$wrap ? "nowrap" : "")};
+
+  @media only screen and (max-widht: 500px) {
+    font-size: 0.775rem;
+  }
 `;
 
 export const NamePercentContainer = styled.div<{
@@ -232,7 +241,7 @@ export const NamePercentContainer = styled.div<{
   box-sizing: border-box;
 
   @media only screen and (max-width: 768px) {
-    width: 75%;
+    width: 70%;
   }
   @media only screen and (max-width: 500px) {
     width: ${(props) => (props.$applyMwidth ? "60%" : props.$mobileW)};

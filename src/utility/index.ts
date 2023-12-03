@@ -1,23 +1,23 @@
-export function getMonthName(monthNumber: number) {
-  const date = new Date();
-  date.setMonth(monthNumber);
+// export function getMonthName(monthNumber: number) {
+//   const date = new Date();
+//   date.setMonth(monthNumber);
 
-  return date.toLocaleString([], {
-    month: "long",
-  });
-}
+//   return date.toLocaleString([], {
+//     month: "long",
+//   });
+// }
 
-export function checkIfStringIsUnderCharacter(inputString: string) {
-  // console.log(inputString.length);
+// export function checkIfStringIsUnderCharacter(inputString: string) {
+//   // console.log(inputString.length);
 
-  if (inputString && inputString.length > 20) {
-    const shortenedString = inputString.substring(0, 20) + "...";
-    return shortenedString;
-  } else {
-  }
+//   if (inputString && inputString.length > 20) {
+//     const shortenedString = inputString.substring(0, 20) + "...";
+//     return shortenedString;
+//   } else {
+//   }
 
-  return inputString;
-}
+//   return inputString;
+// }
 
 // export function calculateStartandEndDate(startDate: any, endDate: any) {
 //   let startDateString = startDate.toLocaleDateString();

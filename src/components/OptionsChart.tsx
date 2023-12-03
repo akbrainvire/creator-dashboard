@@ -4,11 +4,9 @@ import { buttons } from "../constants/index";
 import { HeadingContainer } from "@/styles/indexStyle";
 import DatePickerComponent from "./DatePickerComponent";
 import useWindowDimension from "../../hooks/useWindowDimension";
-import format from "date-fns/format";
 // import RangeDatePicker from "./RangeDatePicker";
 type Props = {
   isApplyStyle: boolean;
-  // getSelectedValue: (value: string) => void;
   getSelectedDateValue?: (value: any, value2: any) => void;
 };
 
@@ -21,15 +19,10 @@ const OptionsChart = (props: Props) => {
     setSelected(value);
   };
 
-  // props.getSelectedValue(selected);
-
   const getSelectedDate = (startDate: any, endDate: any) => {
-    // console.log(startDate, endDate);
-    // props.getSelectedValue(dateSelected);
     if (props.getSelectedDateValue) {
       props.getSelectedDateValue(startDate, endDate);
     }
-    // setSelectedDate([format(startDate, "do LLL"), format(endDate, "do LLL")]);
   };
 
   const doesDateChange = () => {
@@ -57,7 +50,6 @@ const OptionsChart = (props: Props) => {
         getSelectedDate={getSelectedDate}
         doesDateChange={doesDateChange}
       />
-      {/* <RangeDatePicker /> */}
     </HeadingContainer>
   );
 };

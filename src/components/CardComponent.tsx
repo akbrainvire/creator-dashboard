@@ -6,12 +6,10 @@ import {
   NamePercentTypeContainer,
   OneCardComponent,
   OneContainerTabHeight,
-  PostsImageStyled,
+  ImageStyled,
   ProductPercentAndType,
   SpanContainer,
 } from "@/styles/CardComponentStyles";
-import { BoxShadowContainer } from "@/styles/indexStyle";
-import { checkIfStringIsUnderCharacter } from "@/utility";
 import Image from "next/image";
 import React from "react";
 import defaultProductImage from "../../public/defaultProductImage.png";
@@ -78,8 +76,8 @@ const CardComponent = (props: PropsData) => {
             const itemName = `${item.name}`;
             return (
               <EachCardItemContainer key={item.id}>
-                <NamePercentTypeContainer $width="10%">
-                  <Image
+                <NamePercentTypeContainer $width="13%">
+                  <ImageStyled
                     src={item.image || defaultProductImage}
                     alt={item.name}
                     width={25}
@@ -146,7 +144,7 @@ const CardComponent = (props: PropsData) => {
             return (
               <EachCardItemContainer key={item.id}>
                 <NamePercentTypeContainer $width="15%">
-                  <PostsImageStyled
+                  <ImageStyled
                     src={item.image || defaultProductImage}
                     alt={item.name}
                     width={35}

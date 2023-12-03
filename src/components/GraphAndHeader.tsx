@@ -34,7 +34,6 @@ const GraphAndHeader = (props: Props) => {
       <div className="options of chart">
         <OptionsChart
           isApplyStyle={false}
-          // getSelectedValue={getSelected}
           getSelectedDateValue={getSelectedDate}
         />
       </div>

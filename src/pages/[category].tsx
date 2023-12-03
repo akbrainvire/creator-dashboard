@@ -15,8 +15,6 @@ import React, { Fragment } from "react";
 import defaultProductImage from "../../public/defaultProductImage.png";
 import SearchFindComponent from "@/components/SearchFindComponent";
 import TitleOfPPS from "@/components/TitleOfPPS";
-import { checkIfStringIsUnderCharacter } from "@/utility";
-
 interface Props {
   productData: Data[];
   title: string;

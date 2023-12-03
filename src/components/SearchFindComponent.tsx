@@ -13,9 +13,7 @@ import {
 import { useRouter } from "next/router";
 import useWindowDimension from "../../hooks/useWindowDimension";
 
-type Props = {};
-
-const SearchFindComponent = (props: Props) => {
+const SearchFindComponent = () => {
   // const { height, width } = useWindowDimensions();
   const router = useRouter();
   const { data } = useWindowDimension();

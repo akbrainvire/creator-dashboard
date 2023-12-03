@@ -12,7 +12,6 @@ import {
   Title,
   Legend,
 } from "chart.js";
-import format from "date-fns/format";
 
 ChartJS.register(
   LineElement,
@@ -24,7 +23,6 @@ ChartJS.register(
 );
 
 type Props = {
-  // selectedValue: any;
   selectedDate: any;
 };
 
@@ -32,7 +30,6 @@ const ChartComponent = (props: Props) => {
   const [graphDataset, setGraphDataSet] = useState(graphData);
 
   useEffect(() => {
-    // console.log(props.selectedDate.startDate, "typeof");
     if (props.selectedDate.startDate && props.selectedDate.endDate) {
       // console.log(stringStart.indexOf("-"), typeof stringEnd);
 
@@ -81,7 +78,7 @@ const ChartComponent = (props: Props) => {
 
         return currentDate >= oneDayBefore && currentDate <= oneDayAfter;
 
-        //real Code
+        //Main Code
         // return currentDate >= startDatee && currentDate <= endDatee;
       });
       console.log(filtered, "filtered");
@@ -93,7 +90,7 @@ const ChartComponent = (props: Props) => {
     labels: graphDataset.map((item) => item.date),
     datasets: [
       {
-        label: "Sales",
+        label: "Earnings",
         data: graphDataset.map((item) => item.value),
         backgroundColor: "aqua",
         borderColor: "black",
@@ -129,7 +126,6 @@ const ChartComponent = (props: Props) => {
 
   return (
     <div style={{ transition: "none", padding: "1.5rem 0" }}>
-      {/* {console.log("varun")} */}
       <Line data={data} options={options}></Line>
     </div>
   );
