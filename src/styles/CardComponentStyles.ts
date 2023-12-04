@@ -7,6 +7,7 @@ export const OneCardComponent = styled.div<{
   $overflowY?: boolean;
   $isheightChange?: boolean;
   $flexBasis?: boolean;
+  $removeBoxShadowOnMobile?: boolean;
 }>`
   flex-grow: 1;
   flex-basis: ${(props) => (props.$flexBasis ? 1 : 0)};
@@ -32,6 +33,13 @@ export const OneCardComponent = styled.div<{
     height: ${(props) => (props.$isheightChange ? "300px" : "auto")};
     width: 100%;
   }
+
+  @media only screen and (max-width: 500px) {
+    box-shadow: ${(props) =>
+      props.$removeBoxShadowOnMobile
+        ? "none"
+        : "0px 4px 30px 0px rgba(0, 0, 0, 0.08);"};
+  }
 `;
 
 export const CardsComponentContainer = styled.div`
@@ -41,7 +49,7 @@ export const CardsComponentContainer = styled.div`
   flex-wrap: wrap;
   gap: 1.9rem;
 
-  @media only screen and (max-width: 983px) {
+  @media only screen and (max-width: 1000px) {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
@@ -147,20 +155,37 @@ export const EachCardItemContainer = styled.div<{ $padding?: string }>`
   align-self: stretch;
   padding: ${(props) => (props.$padding ? props.$padding : "0.625rem 2rem")};
   border-bottom: 1px solid #dddddd;
+
+  @media only screen and (max-width: 400px) {
+    padding: 0.625rem 1.2rem;
+  }
 `;
 
 export const NamePercentTypeContainer = styled.div<{
   $width?: string;
   $applyMwidth?: boolean;
   $mobileW?: string;
+  $applyTWidth?: boolean;
 }>`
   width: ${(props) => (props.$width ? props.$width : "100%")};
 
+  @media only screen and (max-width: 1200px) {
+    width: 13%;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    width: 7%;
+  }
+
   @media only screen and (max-width: 768px) {
-    width: ${(props) => (props.$width ? props.$width : "10%")};
+    width: ${(props) => (props.$width ? props.$mobileW : "10%")};
   }
   @media only screen and (max-width: 500px) {
     width: ${(props) => (props.$applyMwidth ? "15%" : props.$mobileW)};
+  }
+
+  @media only screen and (max-width: 300px) {
+    width: 15%;
   }
 `;
 
@@ -172,6 +197,7 @@ export const ColumFlexContainerCard = styled.div<{
   display: flex;
   flex-direction: column;
   align-items: end;
+  gap: 0.25rem;
 
   #percent {
     background-color: #f4f0ec;
@@ -239,6 +265,10 @@ export const NamePercentContainer = styled.div<{
   flex-direction: column;
   gap: 0.25rem;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 1000px) {
+    width: 97%;
+  }
 
   @media only screen and (max-width: 768px) {
     width: 70%;

@@ -16,7 +16,7 @@ type Props = {
 const Graph = (props: Props) => {
   const { data } = useWindowDimension();
   return (
-    <BoxShadowContainer>
+    <BoxShadowContainer $removeBoxShadowOnMobile={false}>
       <GraphContainer>
         {data > 650 ? (
           <div style={{ color: "black", padding: "2rem 2rem 1.75rem 2rem" }}>

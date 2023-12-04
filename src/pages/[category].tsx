@@ -23,10 +23,10 @@ interface Props {
 const TopProducts = (props: Props) => {
   return (
     <Fragment>
-      <MainContainer>
+      <MainContainer $changeWidthOnMobile="100%">
         <SearchFindComponent />
-        <BoxShadowContainer>
-          <OneCardComponent>
+        <BoxShadowContainer $removeBoxShadowOnMobile={true}>
+          <OneCardComponent $removeBoxShadowOnMobile={true}>
             <>
               <TitleOfPPS title={props.title} />
 
@@ -35,7 +35,7 @@ const TopProducts = (props: Props) => {
                   <EachCardItemContainer key={item.id}>
                     {props.title === "Top posts" ||
                     props.title === "Top products" ? (
-                      <NamePercentTypeContainer $width="5%" $applyMwidth={true}>
+                      <NamePercentTypeContainer $width="2%" $applyMwidth={true}>
                         <Image
                           src={item.image || defaultProductImage}
                           alt={item.name}

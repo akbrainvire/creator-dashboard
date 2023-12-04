@@ -19,7 +19,6 @@ const GraphAndHeader = (props: Props) => {
   });
 
   const getSelectedDate = (startDate: any, endDate: any) => {
-    console.log(startDate, endDate);
     setStartDate(startDate);
     setendDate(endDate);
   };

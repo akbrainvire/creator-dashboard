@@ -25,7 +25,7 @@ export const ButtonStyled = styled.button<{
 
   gap: ${(props) => (props.$gap ? "5px" : "0")};
 
-  @media only screen and (max-width: 655px) {
+  @media only screen and (max-width: 768px) {
     display: inline-block;
     padding: 8px;
   }
@@ -68,10 +68,11 @@ export const HeadingContainer = styled.div<{
   }
 
   @media only screen and (max-width: 1024px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   @media only screen and (max-width: 920px) {
-    margin-top: ${(props) => (props.$changeMargin ? "0" : "2rem")};
+    padding-bottom: 0.1rem;
+    margin-top: ${(props) => (props.$changeMargin ? "0" : "1.5rem")};
   }
 `;
 
@@ -197,12 +198,19 @@ export const DatePickerCustomHeader = styled.div`
   font-weight: 600;
 `;
 
-export const BoxShadowContainer = styled.div`
+export const BoxShadowContainer = styled.div<{
+  $removeBoxShadowOnMobile: boolean;
+}>`
   border-radius: 20px;
-  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: ${(props) =>
+    props.$removeBoxShadowOnMobile
+      ? "none"
+      : "0px 4px 30px 0px rgba(0, 0, 0, 0.08)"};
 `;
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.div<{
+  $changeWidthOnMobile?: string;
+}>`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -229,7 +237,8 @@ export const MainContainer = styled.div`
   }
 
   @media only screen and (max-width: 500px) {
-    max-width: 90%;
+    max-width: ${(props) =>
+      props.$changeWidthOnMobile ? props.$changeWidthOnMobile : "90%"};
   }
 `;
 

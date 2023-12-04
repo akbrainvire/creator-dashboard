@@ -76,7 +76,11 @@ const CardComponent = (props: PropsData) => {
             const itemName = `${item.name}`;
             return (
               <EachCardItemContainer key={item.id}>
-                <NamePercentTypeContainer $width="13%">
+                <NamePercentTypeContainer
+                  $width="7%"
+                  $mobileW="7%"
+                  $applyTWidth={true}
+                >
                   <ImageStyled
                     src={item.image || defaultProductImage}
                     alt={item.name}
@@ -84,7 +88,7 @@ const CardComponent = (props: PropsData) => {
                     height={25}
                   />
                 </NamePercentTypeContainer>
-                <NamePercentContainer $width="80%">
+                <NamePercentContainer $width="68%">
                   <OneContainerTabHeight $width="100%">
                     <SpanContainer
                       $bold={true}
@@ -143,7 +147,11 @@ const CardComponent = (props: PropsData) => {
             const itemName = item.name;
             return (
               <EachCardItemContainer key={item.id}>
-                <NamePercentTypeContainer $width="15%">
+                <NamePercentTypeContainer
+                  $width="15%"
+                  $mobileW="7%"
+                  $applyTWidth={true}
+                >
                   <ImageStyled
                     src={item.image || defaultProductImage}
                     alt={item.name}
@@ -195,7 +203,7 @@ const CardComponent = (props: PropsData) => {
           {props.data.map((item) => {
             const itemName = item.name;
             return (
-              <EachCardItemContainer key={item.id} $padding="0.625rem 1.2rem;">
+              <EachCardItemContainer key={item.id}>
                 <OneContainerTabHeight $width="80%">
                   <SpanContainer
                     $bold={true}

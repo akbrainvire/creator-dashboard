@@ -12,6 +12,7 @@ import {
   Title,
   Legend,
 } from "chart.js";
+import { LineGraphContainer } from "@/styles/GraphStyles";
 
 ChartJS.register(
   LineElement,
@@ -125,9 +126,9 @@ const ChartComponent = (props: Props) => {
   };
 
   return (
-    <div style={{ transition: "none", padding: "1.5rem 0" }}>
+    <LineGraphContainer>
       <Line data={data} options={options}></Line>
-    </div>
+    </LineGraphContainer>
   );
 };
 
